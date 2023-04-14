@@ -2,9 +2,9 @@
 <div class="container">
   <div id="star-list" class="my-5">
     <% if (message) { %>
-     <div class=" alert alert-dismissible fade show alert  <%= message.type %>  " role="alert">
-        <button class="btn-close" type="butto" data-bs-dismiss="alert" aria-label="Close"></button>
-        <strong><%= message.message  %></strong>>
+     <div class=" alert alert-dismissible fade show alert-<%= message.type %>  " role="alert">
+        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong><%= message.message  %></strong>
       </div>
         <% } %>
     <h2>Lista obiektów</h2>
@@ -17,6 +17,7 @@
             <th>Współrzędne</th>
             <th>Opis</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody >
@@ -27,6 +28,10 @@
             <td> <%=row.name  %></td>
             <td> <%=row.description  %></td>
             <td> <%=row.coordinate  %></td>
+            <td> 
+              <a href="" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+              <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+            </td>
            </tr>
           <% }) %>
         </tbody>
