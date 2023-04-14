@@ -3,7 +3,8 @@ const router = express.Router();
 const Star = require('../models/stars');
 const multer = require('multer');
 const { error } = require("console");
-const stars = require("../models/stars");
+const tars = require("../models/stars");
+const fs = require("fs");
 
 var storage = multer.diskStorage({
     destination: function(req,file,cb){
@@ -39,6 +40,64 @@ router.post ("/add", upload,(req, res)=>{
       res.json({message: error.message, type:'danger'});
    })
 })
+
+//edit star
+router.get('/edit/:id', (req,res)=>{
+    let id = req.params.id;
+    Star.findById(id)
+    .then((star) => {
+        if (!star) {
+            res.redirect("/");
+        } else {
+            res.render("edit_star", {
+                title: "Edit Star",
+                star: star,
+            });
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+        res.redirect("/");
+    });
+})
+//edit post
+router.post('/edit/:id', upload,(req,res)=>{
+    let id = req.params.id;
+    let new_image="";
+    if (req.file) {
+        new_image= req.file.filename;
+        try{
+            fs.unlinkSync('./uploads/'+req.body.old_image);    
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+    else{
+        new_image = req.body.old_image;
+    }
+    Star.findByIdAndUpdate(id, {
+        name: req.body.name,
+        coordinates:req.body.coordinates,
+        description:req.body.description,
+        image:new_image,
+       })
+    .then((star) => {
+        console.log(        req.body.name,
+            req.body.coordinates,
+            req.body.description,
+            new_image,)
+        req.session.message={
+            type:'success',
+            message:'Star updated successfully'
+        };
+        res.redirect("/");
+    })
+    .catch((error) => {
+        res.json({message:error.message, type:'danger'});
+    });
+})
+
 
 //get stars
 router.get ("/", (req, res)=>{

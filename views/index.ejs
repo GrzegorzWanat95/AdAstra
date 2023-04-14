@@ -9,7 +9,7 @@
         <% } %>
     <h2>Lista obiektów</h2>
     <% if (stars!=''  ) { %>
-      <table class="table">
+      <table class="table my-3">
         <thead>
           <tr>
             <th>ID</th>
@@ -29,8 +29,8 @@
             <td> <%=row.description  %></td>
             <td> <%=row.coordinate  %></td>
             <td> 
-              <a href="" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-              <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+              <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+              <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
             </td>
            </tr>
           <% }) %>
