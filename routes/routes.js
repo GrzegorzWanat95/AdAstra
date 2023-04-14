@@ -99,6 +99,28 @@ router.post('/edit/:id', upload,(req,res)=>{
 })
 
 
+//delete star
+const {promisify} = require('util');
+const unlinkAsync = promisify(fs.unlink);
+
+router.get('/delete/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const star = await Star.findById(id);
+    if (star.image !== '') {
+      await unlinkAsync('./uploads/' + star.image);
+    }
+    await Star.findByIdAndRemove(id);
+    req.session.message = {
+      type: "info",
+      message: "Star deleted successfully",
+    };
+    res.redirect('/');
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
+
 //get stars
 router.get ("/", (req, res)=>{
     Star.find().then((stars)=>{
