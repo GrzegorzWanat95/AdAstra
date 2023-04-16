@@ -1,0 +1,12 @@
+.navbar{
+  height: 18vh;
+}
+
+.logo{
+  margin-left: 5vw;
+  height: 90%;
+}
+
+.logo__img{
+  height: 100%;
+}
