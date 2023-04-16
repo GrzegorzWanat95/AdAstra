@@ -1,5 +1,22 @@
+*{
+  font-size: 1.2rem;
+  font-family: 'Nunito Sans', sans-serif;
+  text-transform: uppercase;
+  color: white;
+}
+
+.white{
+  color: white;
+}
+
+.white:hover{
+  color: goldenrod;
+}
+
 .navbar{
   height: 18vh;
+  background: linear-gradient(to top, #12161F, #000000);
+
 }
 
 .logo{
