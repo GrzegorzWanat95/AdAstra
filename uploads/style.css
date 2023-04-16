@@ -27,3 +27,18 @@
 .logo__img{
   height: 100%;
 }
+#sky {
+  position: relative;
+  height: 400px;
+  width: 600px;
+  background: url('https://media.istockphoto.com/id/825778252/photo/blue-sky-and-white-clouds-background.jpg?s=612x612&w=0&k=20&c=u1jkNZutv8H344KPxrgtfIHOMuWdU4H8PQ7_rvSI-wI=') no-repeat center center;
+  background-size: cover;
+}
+
+.star {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url('https://e7.pngegg.com/pngimages/799/255/png-clipart-star-star.png') no-repeat center center;
+  background-size: contain;
+}

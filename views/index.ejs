@@ -41,6 +41,68 @@
 <% } %>
   </div>
 </div> 
+ <div id="sky">
+  <% stars.forEach((row, index) => { %>
+    <div class="star" id="star-<%= index + 1 %>" data-id="<%= row._id %>">
+      <img src="<%=row.image%>" class="img-thumbnail" />
+    </div>
+  <% }) %>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="./script.js"></script>
+    <script>
+$(document).ready(function() {
+    $(".star").draggable({
+        containment: "#sky"
+    });
+
+    $(".star").on("dragstop", function() {
+        var position = $(this).position();
+
+        localStorage.setItem($(this).attr("id"), JSON.stringify(position));
+    });
+
+    $(".star").each(function() {
+        var id = $(this).attr("id");
+        var position = JSON.parse(localStorage.getItem(id));
+
+        if (position !== null) {
+            $(this).css({
+                top: position.top,
+                left: position.left
+            });
+        }
+    });
+
+    function scaleStars() {
+        var skyHeight = $("#sky").height();
+        var skyWidth = $("#sky").width();
+
+        $(".star").each(function() {
+            var starWidth = skyWidth * 0.05; 
+            var starHeight = starWidth; 
+            var starLeft = parseFloat($(this).css("left")) / skyWidth; 
+            var starTop = parseFloat($(this).css("top")) / skyHeight; 
+
+            $(this).css({
+                "width": starWidth,
+                "height": starHeight,
+                "left": starLeft * 100 + "%",
+                "top": starTop * 100 + "%"
+            });
+        });
+    }
+
+
+    scaleStars();
+    $(window).resize(scaleStars);
+});
+
+
+
+    </script>
 <%- include('layout/footer') %>
 
 
