@@ -45,6 +45,7 @@
  <div class="container__sky">
   <% stars.forEach((row, index) => { %>
     <div class="star" id="star-<%= index + 1 %>" data-id="<%= row._id %>">
+      <p class="name">"<%= row.name %>"</p>
     </div>
   <% }) %>
     </div>

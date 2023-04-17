@@ -64,3 +64,9 @@
   background-color: gold;
   border-radius: 50%;  
 }
+
+.name{
+  margin: 1vh;
+  font-size: 1vh;
+  visibility: hidden;
+}
