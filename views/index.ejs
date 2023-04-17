@@ -1,5 +1,6 @@
 <%- include('layout/header') %>
-<div class="container">
+<div class="page__frame">
+<div class="container__list">
   <div id="star-list" class="my-5">
     <% if (message) { %>
      <div class=" alert alert-dismissible fade show alert-<%= message.type %>  " role="alert">
@@ -41,13 +42,13 @@
 <% } %>
   </div>
 </div> 
- <div id="sky">
+ <div class="container__sky">
   <% stars.forEach((row, index) => { %>
     <div class="star" id="star-<%= index + 1 %>" data-id="<%= row._id %>">
-      <img src="<%=row.image%>" class="img-thumbnail" />
     </div>
   <% }) %>
     </div>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -55,7 +56,7 @@
     <script>
 $(document).ready(function() {
     $(".star").draggable({
-        containment: "#sky"
+        containment: ".container__sky"
     });
 
     $(".star").on("dragstop", function() {
@@ -77,11 +78,11 @@ $(document).ready(function() {
     });
 
     function scaleStars() {
-        var skyHeight = $("#sky").height();
-        var skyWidth = $("#sky").width();
+        var skyHeight = $(".container__sky").height();
+        var skyWidth = $(".container__sky").width();
 
         $(".star").each(function() {
-            var starWidth = skyWidth * 0.05; 
+            var starWidth = skyWidth * 0.005; 
             var starHeight = starWidth; 
             var starLeft = parseFloat($(this).css("left")) / skyWidth; 
             var starTop = parseFloat($(this).css("top")) / skyHeight; 
@@ -120,67 +121,3 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>AdAstra</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">AdAstra</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/add">Add Star</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="container">
-      <h1 class="my-5">AdAstra</h1>
-      <div id="star-form">
-        <h2 class="my-4">Dodaj ciało niebieskie</h2>
-        <form method="post">
-          <div class="form-group" >
-            <label for="name">Nazwa:</label>
-            <input type="text" class="form-control" id="name" required>
-          </div>
-          <div class="form-group">
-            <label for="coordinates">Współrzedne:</label>
-            <input type="text" class="form-control" id="coordinates" required>
-          </div>
-          <div class="form-group">
-            <label for="description">Opis:</label>
-            <textarea class="form-control" id="description" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" id="add-star">Dodaj</button>
-        </form>
-      </div>
-      <div id="star-list" class="my-5">
-        <h2>Lista obiektów</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nazwa</th>
-              <th>Współrzędne</th>
-              <th>Opis</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="stars"></tbody>
-        </table>
-      </div>
-    </div>  
-  </body>
-</html> -->

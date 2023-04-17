@@ -27,18 +27,44 @@
 .logo__img{
   height: 100%;
 }
-#sky {
+
+.page__frame{
+  width: 100%;
+  height: 73vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.container__list{
+  height: 100%;
+  border: 1px solid red;
+  width: 20%;
+}
+
+.container__sky{
   position: relative;
-  height: 400px;
-  width: 600px;
-  background: url('https://media.istockphoto.com/id/825778252/photo/blue-sky-and-white-clouds-background.jpg?s=612x612&w=0&k=20&c=u1jkNZutv8H344KPxrgtfIHOMuWdU4H8PQ7_rvSI-wI=') no-repeat center center;
+  height: 70%;
+  width: 60vw;
+  background-color: #12161F;
   background-size: cover;
 }
 
 .star {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  background: url('https://e7.pngegg.com/pngimages/799/255/png-clipart-star-star.png') no-repeat center center;
+  width: 2px;
+  height: 2px;
   background-size: contain;
+  background-color: rgba(255, 255, 255, 0.8); /* white with 50% opacity */
+  border-radius: 50%;
+}
+
+.star:hover{
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background-size: contain;
+  background-color: gold;
+  border-radius: 50%;  
 }
