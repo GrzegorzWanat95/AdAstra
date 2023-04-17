@@ -53,17 +53,13 @@
 
 .star {
   position: absolute;
-  width: 2px;
-  height: 2px;
   background-size: contain;
-  background-color: rgba(255, 255, 255, 0.8); /* white with 50% opacity */
-  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8); 
+  border-radius: 50%;  
 }
 
 .star:hover{
   position: absolute;
-  width: 7px;
-  height: 7px;
   background-size: contain;
   background-color: gold;
   border-radius: 50%;  
