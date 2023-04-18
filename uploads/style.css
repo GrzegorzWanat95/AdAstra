@@ -44,13 +44,13 @@
 .container__list{
   height: 100%;
   background: #12161F;
-  width: 20%;
+  width: 30%;
 }
 
 .container__sky{
   position: relative;
   height: 73vh;
-  width: 80%;
+  width: 70%;
   background-color: #12161F;
   background-size: cover;
 }
@@ -101,8 +101,13 @@
   height: 100%;
 }
 
-.star-list{
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, #12161F, #000000);
+.list__frame{
+  margin-left: 5vw;
+}
+
+.small_img{
+  height: 50px;
+  width: auto;
+  border: none;
+  background-color: none;
 }
