@@ -83,7 +83,7 @@ $(document).ready(function() {
         var skyWidth = $(".container__sky").width();
 
         $(".star").each(function() {
-            var starWidth = skyWidth * 0.007; 
+            var starWidth = skyWidth * (Math.random() * 0.006) + 0.002; 
             var starHeight = starWidth; 
             var starLeft = parseFloat($(this).css("left")) / skyWidth; 
             var starTop = parseFloat($(this).css("top")) / skyHeight; 
@@ -100,6 +100,19 @@ $(document).ready(function() {
 
     scaleStars();
     $(window).resize(scaleStars);
+
+    function blinkStars() {
+  setTimeout(function() {
+    $(".star").addClass("blink");
+    setTimeout(function() {
+      $(".star").removeClass("blink");
+      blinkStars();
+    }, 150);
+  }, 2000 + Math.random() * 600);
+}
+
+    blinkStars(); // call the function
+
 });
 
 
