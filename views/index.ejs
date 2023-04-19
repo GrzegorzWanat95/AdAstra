@@ -26,8 +26,11 @@
             <td> <%=row.name  %></td>
             <td> <%=row.coordinate  %></td>
             <td> 
-              <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-              <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" checked role="switch" id="flexSwitchCheckDefault">
+              </div>
+              <!-- <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+              <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a> -->
             </td>
            </tr>
           <% }) %>
@@ -38,7 +41,7 @@
 <% } %>
   </div>
 </div> 
- <div class="container__sky">
+ <div class="container__sky" id="container__sky">
   <% stars.forEach((row, index) => { %>
     <div class="star" id="star-<%= index + 1 %>" data-id="<%= row._id %>">
       <p class="name">"<%= row.name %>"</p>
@@ -51,6 +54,26 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="./script.js"></script>
     <script>
+
+//filter
+const checkboxes = document.querySelectorAll('.form-check-input');
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', filterStars);
+});
+function filterStars() {
+  const checkboxes = document.querySelectorAll('.form-check-input');
+  const stars = document.querySelectorAll('.star');
+
+  checkboxes.forEach((checkbox, index) => {
+    if (checkbox.checked) {
+      stars[index].style.display = 'block';
+    } else {
+      stars[index].style.display = 'none';
+    }
+  });
+}
+
+
 $(document).ready(function() {
     $(".star").draggable({
         containment: ".container__sky"
@@ -131,7 +154,49 @@ $(document).ready(function() {
 });
 
 
+const starsDivs = document.querySelectorAll('.star');
+starsDivs.forEach(starDiv => {
+  starDiv.addEventListener('click', () => {
+    const starId = starDiv.dataset.id;
 
+    // Wykonanie żądania AJAX, aby pobrać szczegóły danej gwiazdy
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        const starDetails = JSON.parse(this.responseText);
+
+        // Wyświetlenie szczegółów danej gwiazdy w divie z klasą "container__sky"
+        const containerSkyDiv = document.querySelector('.container__sky');
+        containerSkyDiv.innerHTML = `
+        <div>
+            <h2>${starDetails.name}</h2>
+            <img src="${starDetails.image}" />
+            <p>Współrzędne: ${starDetails.coordinate}</p>
+            <p>${starDetails.description}</p>
+            <div>
+              <a href="/edit/${starDetails._id}" class="btn btn-success"><i class="fas fa-edit fa-lg mx-1"></i>Edytuj</a>
+              <a href="/delete/${starDetails._id}" class="btn btn-danger"><i class="fas fa-trash fa-lg mx-1"></i>Usuń</a>
+              <button class="btn btn-secondary mt-3 back-button"><i class="fas fa-chevron-left"></i> Powrót</button>
+            </div>
+          </div>
+        `;
+
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('click', () => {
+          window.location.reload();
+        });
+
+
+
+
+
+
+      }
+    };
+    xhr.open('GET', `/details/${starId}`, true);
+    xhr.send();
+  });
+});
     </script>
 <%- include('layout/footer') %>
 

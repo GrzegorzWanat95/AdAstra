@@ -19,6 +19,18 @@ var upload = multer({
     storage:storage,
 }).single('image');
 
+router.get('/', async (req, res) => {
+    try {
+      const stars = await Star.find();
+      res.render('index', {
+        title: 'Home Page',
+        stars: stars,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).send('Wystąpił błąd');
+    }
+  });
 
 //insert star into database
 router.post ("/add", upload,(req, res)=>{
@@ -98,6 +110,15 @@ router.post('/edit/:id', upload,(req,res)=>{
     });
 })
 
+router.get('/details/:id', async (req, res) => {
+    try {
+      const star = await Star.findById(req.params.id);
+      res.send(star);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send('Wystąpił błąd');
+    }
+  });
 
 //delete star
 const {promisify} = require('util');
@@ -121,17 +142,7 @@ router.get('/delete/:id', async (req, res) => {
   }
 });
 
-//get stars
-router.get ("/", (req, res)=>{
-    Star.find().then((stars)=>{
-        res.render("index", {
-            title: "Home Page",
-            stars: stars,
-        });
-    }).catch((error)=>{
-        res.json({message:error.message});
-    });
-})
+
 router.get ("/add", (req, res)=>{
     res.render("add_star", {title:'Add'});
 })
