@@ -133,3 +133,41 @@ label{
   font-size: 1.2rem;
 }
 
+.dataTables_info{
+  font-size: 0.6rem;
+  margin-right: 1rem;
+  width: 100%;
+}
+
+.pagination{
+  display: flex;
+  height: 2rem;
+  width: auto;
+  border: 1px solid red;
+}
+
+.paginate_button{
+  border: 1px solid green;
+  height: 2rem;
+}
+
+.dataTables_paginate, .paging_simple_numbers, .paginate_button, .next, .previous, .disabled, .page-item, .page-link{
+  display: flex;
+  height: 2rem !important;
+  border: 1px solid red;
+  font-size: 0.6rem !important;
+  color: white;
+  background-color: #12161F;
+}
+
+#DataTables_Table_0_paginate{
+  display: flex;
+  height: 2rem !important;
+  border: 1px solid red;
+  font-size: 0.6rem !important;
+  color: white;
+  background-color: #12161F;
+}
+
+
+
