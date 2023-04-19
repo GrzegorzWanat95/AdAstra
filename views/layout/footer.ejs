@@ -2,11 +2,19 @@
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
 
 <script> 
-$(document).ready(function(){
-    $("table").DataTable({
-        order:[0,'desc']
-    });
-});
+$(document).ready(function() {
+    $('table').DataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Polish.json",
+            "paginate": {
+                "previous": "&#9664;",
+                "next": "&#9654;"
+            },
+            "info": "_START_ do _END_ z _TOTAL_ WYNIKÓW",
+            "infoEmpty": " 0 - 0 z 0 "
+        }
+    } );
+} );
 </script>
 <div class="footer">
     <div class="logo">
