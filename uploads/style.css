@@ -106,8 +106,30 @@
 }
 
 .small_img{
-  height: 50px;
+  height: 40px;
   width: auto;
   border: none;
   background-color: none;
 }
+
+label{
+  font-size: 0.6rem;
+  margin-right: 1rem;
+}
+
+.form-select, .form-control-sm{
+  height: 2rem;
+  width: 10px;
+  background-color: inherit;
+  color: white;
+  border: none;
+}
+
+.sorting{
+  font-size: 0.6rem;
+}
+
+.header{
+  font-size: 1.2rem;
+}
+

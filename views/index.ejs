@@ -1,5 +1,5 @@
 <%- include('layout/header') %>
-<div class="page__frame">
+<div class="page__frame fog">
 <div class="container__list">
   <div id="star-list" class="list__frame my-4">
     <% if (message) { %>
@@ -8,7 +8,7 @@
         <strong><%= message.message  %></strong>
       </div>
         <% } %>
-    <h3 class="mb-5">Katalog gwiazd</h2>
+    <p class="header">Mapa nieba<p>
     <% if (stars!=''  ) { %>
       <table class="table">
         <thead>
