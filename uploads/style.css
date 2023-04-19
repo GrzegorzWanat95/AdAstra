@@ -141,29 +141,21 @@ label{
 
 .pagination{
   display: flex;
+  justify-content: end;
+  justify-items: end;
+  align-content: center;
+  align-items: center;
   height: 2rem;
   width: auto;
-  border: 1px solid red;
 }
 
 .paginate_button{
-  border: 1px solid green;
   height: 2rem;
 }
 
 .dataTables_paginate, .paging_simple_numbers, .paginate_button, .next, .previous, .disabled, .page-item, .page-link{
   display: flex;
-  height: 2rem !important;
-  border: 1px solid red;
-  font-size: 0.6rem !important;
-  color: white;
-  background-color: #12161F;
-}
-
-#DataTables_Table_0_paginate{
-  display: flex;
-  height: 2rem !important;
-  border: 1px solid red;
+  height: 1.6rem !important;
   font-size: 0.6rem !important;
   color: white;
   background-color: #12161F;
