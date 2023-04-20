@@ -4,6 +4,9 @@
   text-transform: uppercase;
   color: white;
 }
+:root {
+  --primary-color: #12161F;
+}
 
 .white{
   color: white;
@@ -15,7 +18,7 @@
 
 .navbar{
   height: 18vh;
-  background: linear-gradient(to top, #12161F, #000000);
+  background: linear-gradient(to top,var(--primary-color), #000000);
 
 }
 
@@ -43,7 +46,7 @@
 
 .container__list{
   height: 100%;
-  background: #12161F;
+  background: var(--primary-color);
   width: 30%;
 }
 
@@ -51,10 +54,9 @@
   position: relative;
   height: 73vh;
   width: 70%;
-  background-color: #12161F;
+  background-color:var(--primary-color);
   background-size: cover;
 }
-
 .star {
   position: absolute;
   background-size: contain;
@@ -89,7 +91,7 @@
   align-content: center;
   width: 100%;
   height: 9vh;
-  background: linear-gradient(to bottom, #12161F, #000000);
+  background: linear-gradient(to bottom, var(--primary-color), #000000);
 }
 
 .navbar-brand{
@@ -158,10 +160,13 @@ label{
   height: 1.6rem !important;
   font-size: 0.6rem !important;
   color: white;
-  background-color: #12161F;
+  background-color: var(--primary-color);
 }
 
 #flexSwitchCheckDefault{
-  background-color: #12161F;
+  background-color: var(--primary-color);
   border: 1px solid white;
+}
+.color-buttons button.active {
+  border: 2px solid #fff;
 }

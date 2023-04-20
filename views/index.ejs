@@ -40,6 +40,13 @@
      <h1 class="text-center text-secondary mt-5">Nie znaleziono żadnego obiektu w bazie</h1>>
 <% } %>
   </div>
+  <div class="color-buttons m-5">
+    <button type="button" class="color-dropdown__option" data-color="#0E0F13"></button>
+    <button type="button" class="color-dropdown__option" data-color="#12161F"></button>
+    <button type="button" class="color-dropdown__option" data-color="#1E2636"></button>
+    <button type="button" class="color-dropdown__option" data-color="#3D4866"></button>
+    <button type="button" class="color-dropdown__option" data-color="#6B7DAD"></button>
+  </div>
 </div> 
  <div class="container__sky" id="container__sky">
   <% stars.forEach((row, index) => { %>
@@ -54,6 +61,32 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="./script.js"></script>
     <script>
+//theme controller
+const colorButtons = document.querySelectorAll('.color-buttons button');
+const root = document.documentElement;
+// save to local storage and to css variable
+function changeColor(color) {
+  root.style.setProperty('--primary-color', color);
+  localStorage.setItem('primary-color', color);
+}
+//clear active class
+colorButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const color = button.getAttribute('data-color');
+    changeColor(color);
+    colorButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+  });
+});
+//set active
+const savedColor = localStorage.getItem('primary-color');
+if (savedColor) {
+  changeColor(savedColor);
+  const activeButton = document.querySelector(`[data-color="${savedColor}"]`);
+  activeButton.classList.add('active');
+}
+
+
 
 //filter
 const checkboxes = document.querySelectorAll('.form-check-input');
