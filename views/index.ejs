@@ -10,6 +10,14 @@
       </div>
         <% } %>
     <p class="header">Mapa nieba<p>
+      <div class="color-buttons">
+        <i class="fas fa-clock"></i>
+        <button type="button" class="color-dropdown__option" data-color="#0E0F13"></button>
+        <button type="button" class="color-dropdown__option" data-color="#12161F"></button>
+        <button type="button" class="color-dropdown__option" data-color="#1E2636"></button>
+        <button type="button" class="color-dropdown__option" data-color="#3D4866"></button>
+        <button type="button" class="color-dropdown__option" data-color="#6B7DAD"></button>
+      </div>
     <% if (stars!=''  ) { %>
       <table class="table">
         <thead>
@@ -40,13 +48,6 @@
     <% }  else { %>
      <h1 class="text-center text-secondary mt-5">Nie znaleziono żadnego obiektu w bazie</h1>>
 <% } %>
-  </div>
-  <div class="color-buttons m-5">
-    <button type="button" class="color-dropdown__option" data-color="#0E0F13"></button>
-    <button type="button" class="color-dropdown__option" data-color="#12161F"></button>
-    <button type="button" class="color-dropdown__option" data-color="#1E2636"></button>
-    <button type="button" class="color-dropdown__option" data-color="#3D4866"></button>
-    <button type="button" class="color-dropdown__option" data-color="#6B7DAD"></button>
   </div>
   <button type="button" class="btn btn-primary" id="toggle-rain">Deszcz</button>
   <button type="button" class="btn btn-primary" id="toggle-snow">Snieg</button>
