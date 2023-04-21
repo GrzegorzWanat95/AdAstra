@@ -1,4 +1,5 @@
 <%- include('layout/header') %>
+<section class="rain">
 <div class="page__frame">
 <div class="container__list">
   <div id="star-list" class="list__frame my-2">
@@ -47,6 +48,7 @@
     <button type="button" class="color-dropdown__option" data-color="#3D4866"></button>
     <button type="button" class="color-dropdown__option" data-color="#6B7DAD"></button>
   </div>
+  <button type="button" class="btn btn-primary" id="toggle-rain">Deszcz</button>
 </div> 
  <div class="container__sky" id="container__sky">
   <% stars.forEach((row, index) => { %>
@@ -56,11 +58,53 @@
   <% }) %>
     </div>
 </div>
-
+</section>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="./script.js"></script>
     <script>
+
+// Rain
+// number of drops created.
+var nbDrop = 100;
+var raining = false;
+
+// function to generate a random number range.
+function randRange( minNum, maxNum) {
+return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+}
+
+// function to generate drops
+function createRain() {
+for( i=1;i<nbDrop;i++) {
+var dropLeft = randRange(0,2600);
+var dropTop = randRange(-1000,1400);
+$('.rain').append('<div class="drop" id="drop'+i+'"></div>');
+$('#drop'+i).css('left',dropLeft);
+$('#drop'+i).css('top',dropTop);}}
+// Function to start or stop raining
+function toggleRain() {
+if (!raining) {
+createRain();
+raining = true;
+localStorage.setItem("raining", "true");
+} else {
+$('.drop').remove();
+raining = false;
+localStorage.setItem("raining", "false");
+}
+}
+
+// Check local storage for previous rain state
+if(localStorage.getItem("raining") === "true") {
+toggleRain();
+}
+
+// Add event listener to toggle rain button
+$('#toggle-rain').click(toggleRain);
+
+
+
 //theme controller
 const colorButtons = document.querySelectorAll('.color-buttons button');
 const root = document.documentElement;
