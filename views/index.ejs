@@ -1,5 +1,5 @@
 <%- include('layout/header') %>
-<section class="rain">
+<section class="rain snow">
 <div class="page__frame">
 <div class="container__list">
   <div id="star-list" class="list__frame my-2">
@@ -49,6 +49,7 @@
     <button type="button" class="color-dropdown__option" data-color="#6B7DAD"></button>
   </div>
   <button type="button" class="btn btn-primary" id="toggle-rain">Deszcz</button>
+  <button type="button" class="btn btn-primary" id="toggle-snow">Snieg</button>
 </div> 
  <div class="container__sky" id="container__sky">
   <% stars.forEach((row, index) => { %>
@@ -64,44 +65,81 @@
     <script src="./script.js"></script>
     <script>
 
-// Rain
-// number of drops created.
 var nbDrop = 100;
 var raining = false;
+var snowing = false;
 
-// function to generate a random number range.
-function randRange( minNum, maxNum) {
-return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+function randRange(minNum, maxNum) {
+  return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
 }
 
-// function to generate drops
 function createRain() {
-for( i=1;i<nbDrop;i++) {
-var dropLeft = randRange(0,2600);
-var dropTop = randRange(-1000,1400);
-$('.rain').append('<div class="drop" id="drop'+i+'"></div>');
-$('#drop'+i).css('left',dropLeft);
-$('#drop'+i).css('top',dropTop);}}
-// Function to start or stop raining
+  for (i = 1; i < nbDrop; i++) {
+    var dropLeft = randRange(0, 2600);
+    var dropTop = randRange(-1000, 1400);
+    $('.rain').append('<div class="drop" id="drop' + i + '"></div>');
+    $('#drop' + i).css('left', dropLeft);
+    $('#drop' + i).css('top', dropTop);
+  }
+}
+
+function createSnow() {
+  for (i = 1; i < nbDrop; i++) {
+    var dropLeft = randRange(0, 2600);
+    var dropTop = randRange(-1000, 1400);
+    $('.snow').append('<div class="dropsnow" id="dropsnow' + i + '"></div>');
+    $('#dropsnow' + i).css('left', dropLeft);
+    $('#dropsnow' + i).css('top', dropTop);
+  }
+}
+
 function toggleRain() {
-if (!raining) {
-createRain();
-raining = true;
-localStorage.setItem("raining", "true");
-} else {
-$('.drop').remove();
-raining = false;
-localStorage.setItem("raining", "false");
-}
-}
-
-// Check local storage for previous rain state
-if(localStorage.getItem("raining") === "true") {
-toggleRain();
+  if (!raining) {
+    createRain();
+    raining = true;
+    localStorage.setItem("raining", "true");
+  } else {
+    $('.drop').remove();
+    raining = false;
+    localStorage.setItem("raining", "false");
+  }
 }
 
-// Add event listener to toggle rain button
+function toggleSnow() {
+  if (!snowing) {
+    createSnow();
+    snowing = true;
+    localStorage.setItem("snowing", "true");
+  } else {
+    $('.dropsnow').remove();
+    snowing = false;
+    localStorage.setItem("snowing", "false");
+  }
+}
+
+if (localStorage.getItem("raining") === "true") {
+  toggleRain();
+}
+
+if (localStorage.getItem("snowing") === "true") {
+  toggleSnow();
+}
+
 $('#toggle-rain').click(toggleRain);
+$('#toggle-snow').click(toggleSnow);
+
+
+///
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -226,7 +264,7 @@ $(document).ready(function() {
   }, 2000 + Math.random() * 600);
 }
 
-    blinkStars(); // call the function
+    blinkStars(); 
 
 });
 

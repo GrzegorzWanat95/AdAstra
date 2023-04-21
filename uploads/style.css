@@ -193,7 +193,18 @@ overflow:hidden;}
   -moz-animation: fall .63s linear infinite;
   
 }
-
+.dropsnow {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 70%, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0) 10%);
+  box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.8);
+  width: 10px;
+  height: 10px; 
+  border-radius: 50%;
+  position: absolute;
+  bottom: 200px;
+  animation: fall 0.9s linear infinite;
+  -moz-animation: fall .9s linear infinite;
+  will-change: transform;
+}
 /* animate the drops*/
 @-webkit-keyframes fall {
 	to {margin-top:900px;}
