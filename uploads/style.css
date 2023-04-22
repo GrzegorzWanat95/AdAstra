@@ -135,6 +135,16 @@ label{
   font-size: 1.2rem;
 }
 
+.header__mini{
+  font-size: 0.6rem;
+  margin-right: 0.5rem;
+}
+
+.bi{
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
 .dataTables_info{
   font-size: 0.6rem;
   margin-right: 1rem;
@@ -153,7 +163,7 @@ label{
 
 .paginate_button, .dataTables_paginate, .paging_simple_numbers, .paginate_button, .next, .previous, .disabled, .page-item, .page-link{
   height: 2rem;
-  background-color: #12161F !important;
+  background-color: inherit !important;
   color: white;
 }
 
@@ -171,6 +181,19 @@ label{
 }
 .color-buttons button.active {
   border: 2px solid #fff;
+}
+
+.color-buttons{
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.color-buttons__weather{
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
 }
 
 .fas{
@@ -215,5 +238,16 @@ overflow:hidden;}
 }
 @-moz-keyframes fall {
 	to {margin-top:900px;}
+}
+
+.color-dropdown__option{
+  border-radius: 2%;
+  margin: 0.5rem;
+}
+
+.weather{
+  background-color: transparent;
+  margin: 0px;
+  border: none;
 }
 
