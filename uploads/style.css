@@ -264,8 +264,27 @@ td{
 
 .clouds{
   position: absolute;
-  width: 60%;
+  width: 100%;
   opacity: 30%;
   z-index: 1001;
 }
 
+.clouds__1{
+  display: none;
+}
+
+.clouds__2{
+  display: none;
+}
+
+.clouds__3{
+  display: none;
+}
+
+.clouds__4{
+  display: none;
+}
+
+.clouds__5{
+  display: none;
+}
