@@ -72,16 +72,21 @@
 }
 
 .star:hover{
+  background-color: rgb(255, 251, 0); 
+}
+
+.star:hover .name{
   position: absolute;
   background-size: contain;
-  background-color: gold;
   border-radius: 50%;  
+  display: block;
 }
 
 .name{
-  margin: 1vh;
-  font-size: 1vh;
-  visibility: hidden;
+  margin-left: 3vh;
+  font-size: 0.6rem;
+  display: none;
+  background-color: transparent !important;
 }
 
 .footer{
@@ -132,7 +137,7 @@ label{
 }
 
 .header{
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
 
 .header__mini{
@@ -149,6 +154,7 @@ label{
   font-size: 0.6rem;
   margin-right: 1rem;
   width: 100%;
+  margin-top: 0px;
 }
 
 .pagination{
@@ -223,8 +229,8 @@ overflow:hidden;}
 .dropsnow {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 70%, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0) 10%);
   box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.8);
-  width: 10px;
-  height: 10px; 
+  width: 5px;
+  height: 5px; 
   border-radius: 50%;
   position: absolute;
   bottom: 200px;
@@ -249,5 +255,9 @@ overflow:hidden;}
   background-color: transparent;
   margin: 0px;
   border: none;
+}
+
+td{
+  font-size: 0.6rem;
 }
 
