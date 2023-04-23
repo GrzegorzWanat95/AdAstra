@@ -35,6 +35,15 @@
   height: 60%;
 }
 
+.settings__panel{
+  width: 100%;
+  height: 100%;
+}
+
+.star-list{
+  height:100%;
+}
+
 .page__frame{
   width: 100%;
   height: 73vh;
@@ -47,13 +56,13 @@
 .container__list{
   height: 100%;
   background: var(--primary-color);
-  width: 30%;
+  width: 32%;
 }
 
 .container__sky{
   position: relative;
   height: 73vh;
-  width: 70%;
+  width: 68%;
   background-color:var(--primary-color);
   background-size: cover;
 }
@@ -110,11 +119,12 @@
 }
 
 .list__frame{
-  margin-left: 5vw;
+  height: 100%;
+  margin-left: 4vw;
 }
 
 .small_img{
-  height: 40px;
+  height: 35px;
   width: auto;
   border: none;
   background-color: none;
@@ -128,9 +138,22 @@ label{
 .form-select, .form-control-sm{
   height: 2rem;
   width: 10px;
+  max-width: 110px;
   background-color: inherit;
   color: white;
   border: none;
+}
+
+.form-select:focus, .form-control-sm:focus, .form-select-sm:focus{
+  height: 2rem;
+  width: 10px;
+  background-color: inherit;
+  color: white;
+  border: none;
+}
+
+option {
+  background-color: #12161F;
 }
 
 .sorting{
@@ -139,6 +162,8 @@ label{
 
 .header{
   font-size: 0.9rem;
+  margin-bottom: 0.5rem !important;
+  padding: 0px !important;
 }
 
 .header__mini{
@@ -149,6 +174,18 @@ label{
 .bi{
   margin-right: 0.5rem;
   margin-left: 0.5rem;
+}
+
+.table{
+  width: 100%;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.dataTable, .no-footer{
+  width: 100%;
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
 .dataTables_info{
@@ -168,8 +205,32 @@ label{
   width: auto;
 }
 
+.margin-left{
+  margin-left: 1.5vw;
+}
+
+.row, .dt-row{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  justify-items: flex-start;
+  width: 100%;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.dataTables_wrappe, .dt-bootstrap5, .no-footer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-content: center;
+  justify-items: start;
+  width: 100%;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
 .paginate_button, .dataTables_paginate, .paging_simple_numbers, .paginate_button, .next, .previous, .disabled, .page-item, .page-link{
-  height: 2rem;
   background-color: inherit !important;
   color: white;
 }
@@ -249,13 +310,13 @@ overflow:hidden;}
 
 .color-dropdown__option{
   border-radius: 2%;
-  margin: 0.5rem;
+  margin: 0.3rem;
 }
 
 .weather{
   background-color: transparent;
-  margin: 0px;
   border: none;
+  height: 1.5rem;
 }
 
 td{
@@ -287,4 +348,138 @@ td{
 
 .clouds__5{
   display: none;
+}
+
+.bi{
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.last{
+  margin-right: 0.8rem;
+}
+
+.row{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: start;
+  justify-items: start;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.details{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-items: center;
+}
+
+.details__header{
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  font-size: 1.5rem;
+  height: 10%;
+
+}
+
+.details__frame{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.image__section{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.details__image{
+  width: 100%;
+  height: auto;
+}
+
+.text__section{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content:flex-start;
+  justify-content: flex-start;
+  width: 50%;
+  height: 100%;
+}
+
+.text__main{
+  height: 80%;
+  width: 100%;
+}
+
+.text__field{
+  text-align: start;
+  height: 100%;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.button__section{
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  height: 10%;
+}
+
+.pagination{
+  height: 100%;
+  margin: 0px !important;
+}
+
+.padding__frame{
+  width: 80%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.default__button, .back__button{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 22%;
+  height: 80%;
+  font-size: 0.6rem;
+  border: 1px solid white;
+  background-color: inherit;
+  border-radius: 10%;
+  margin: 2%;
+  text-decoration: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+  text-decoration: none;
 }
