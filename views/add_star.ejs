@@ -1,27 +1,28 @@
 
   <%- include('layout/header') %>
-  <div class="container">
-    <h1 class="my-5 text-dark">AdAstra</h1>
-    <div id="star-form" class="border p-4 mb-5 bg-white">
-      <h2 class="my-4 text-dark">Dodaj ciało niebieskie</h2>
+  <div class="page__frame__add">
+    <div id="star-form">
+      <h2 class="my-4 white">Dodaj ciało niebieskie</h2>
       <form action="/add" method="post" id="add-form" enctype="multipart/form-data">
         <div class="form-group">
-          <label for="name" class="text-dark">Nazwa:</label>
+          <label for="name" class="text-white">Nazwa:</label>
           <input type="text" class="form-control" name="name" required>
         </div>
         <div class="form-group">
-          <label for="coordinates" class="text-dark">Współrzedne:</label>
+          <label for="coordinates" class="text-white">Współrzedne:</label>
           <input type="text" class="form-control" name="coordinates" required>
         </div>
         <div class="form-group">
-          <label for="description" class="text-dark">Opis:</label>
+          <label for="description" class="text-white">Opis:</label>
           <textarea class="form-control" name="description" required></textarea>
         </div>
         <div class="form-group">
-          <label for="image" class="text-dark">Wybierz zdjęcie:</label>
+          <label for="image" class="text-white">Wybierz zdjęcie:</label>
           <input class="form-control" type="file" name="image" required>
         </div>
-        <button type="submit" class="btn btn-primary btn-block" id="add-star">Dodaj</button>
+        <div class="button__pad">
+          <button type="submit" class="default__button__submit" id="add-star">Dodaj</button>
+        </div>
       </form>
     </div>
   </div>
