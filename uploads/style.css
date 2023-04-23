@@ -81,7 +81,7 @@
   background-size: contain;
   background-color: rgba(255, 255, 255, 255); 
   border-radius: 50%;  
-  z-index: 1000;
+  z-index: 1003;
 }
 
 .star.blink {
@@ -522,4 +522,47 @@ a:hover {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+
+
+
+
+
+
+
+.fog-img {
+  position: absolute;
+  height: 100vh;
+  width: 300vw;
+  z-index: 1;
+  opacity: 0%;
+  pointer-events: none;
+  filter: blur(5px);
+}
+
+.fog-img-first {
+  background: url("https://github.com/WebDevSHORTS/Fog-Overlay-Animation/blob/master/img/fog-1.png?raw=true");
+  background-repeat: repeat-x;
+  background-size: contain;
+  background-position: center;
+  animation: marquee 60s linear infinite;
+}
+
+.fog-img-second {
+  background: url("https://github.com/WebDevSHORTS/Fog-Overlay-Animation/blob/master/img/fog-2.png?raw=true");
+  background-repeat: repeat-x;
+  background-size: contain;
+  background-position: center;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-200vw, 0, 0);
+  }
 }
