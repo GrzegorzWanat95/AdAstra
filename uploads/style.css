@@ -284,7 +284,9 @@ option {
   align-content: center;
   align-items: center;
 }
-
+.color-buttons__weather button.active {
+  border: 2px solid #fff;
+}
 .fas{
   color: white;
 }
@@ -349,27 +351,13 @@ td{
   width: 100%;
   opacity: 30%;
   z-index: 1001;
+  display:none;
 }
 
-.clouds__1{
-  display: none;
+.clouds.active{
+  display: block;
 }
 
-.clouds__2{
-  display: none;
-}
-
-.clouds__3{
-  display: none;
-}
-
-.clouds__4{
-  display: none;
-}
-
-.clouds__5{
-  display: none;
-}
 
 .bi{
   margin: 0px !important;
