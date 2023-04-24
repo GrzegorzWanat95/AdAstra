@@ -335,7 +335,18 @@ overflow:hidden;}
   border-radius: 2%;
   margin: 0.3rem;
 }
-
+.clouds-toggle{
+  border-radius: 2%;
+  margin: 0.3rem;
+}
+.moons-toggle{
+  border-radius: 2%;
+  margin: 0.3rem;
+}
+.fog{
+  border-radius: 2%;
+  margin: 0.3rem;
+}
 .weather{
   background-color: transparent;
   border: none;
@@ -358,6 +369,17 @@ td{
   display: block;
 }
 
+.moon{
+  position: absolute;
+  width: 100%;
+  opacity: 70%;
+  z-index: 1001;
+  display:none;
+}
+
+.moon.active{
+  display: block;
+}
 
 .bi{
   margin: 0px !important;
