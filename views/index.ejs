@@ -152,8 +152,9 @@
     <!-- <script src="./script.js"></script> -->
     <script>
 //fog opacity
-const buttons = document.querySelectorAll('.fog');
-const opacityValues = ['0%', '40%', '75%', '100%'];
+const buttons = document.querySelectorAll('.color-dropdown__option');
+const opacityValues = ['0%', '30%', '50%', '75%', '100%'];
+let activeButton = null;
 
 buttons.forEach((button, index) => {
   button.addEventListener('click', () => {
@@ -161,7 +162,14 @@ buttons.forEach((button, index) => {
     const fogImg = document.querySelector('.fog-img');
     const opacity = opacityValues[id.charAt(id.length - 1)];
     fogImg.style.opacity = opacity;
+
+    buttons.forEach((button) => {
+      button.classList.remove('active');
+    });
+    button.classList.add('active');
+
     localStorage.setItem('opacity', opacity);
+    activeButton = button;
   });
 });
 
@@ -169,6 +177,17 @@ const savedOpacity = localStorage.getItem('opacity');
 if (savedOpacity !== null) {
   const fogImg = document.querySelector('.fog-img');
   fogImg.style.opacity = savedOpacity;
+
+  buttons.forEach((button) => {
+    if (button.getAttribute('data-id') === 'fog-' + opacityValues.indexOf(savedOpacity)) {
+      button.classList.add('active');
+      activeButton = button;
+    }
+  });
+}
+
+if (activeButton !== null) {
+  activeButton.classList.add('active');
 }
 
 
