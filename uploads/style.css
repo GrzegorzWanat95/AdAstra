@@ -546,13 +546,6 @@ a:hover {
   align-content: center;
 }
 
-
-
-
-
-
-
-
 .fog-img {
   position: absolute;
   height: 100vh;
@@ -587,4 +580,12 @@ a:hover {
   100% {
     transform: translate3d(-200vw, 0, 0);
   }
+}
+
+.moon{
+  margin-left: 5%;
+  margin-top: 5%;
+  width: 60px;
+  height: 60px;
+  filter: brightness(1.5);
 }
