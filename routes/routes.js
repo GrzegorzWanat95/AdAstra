@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Star = require('../models/stars');
+const Constellation = require('../models/constellations');
 const multer = require('multer');
 const { error } = require("console");
 const tars = require("../models/stars");
@@ -32,11 +33,44 @@ router.get('/', async (req, res) => {
     }
   });
 
+///Constelations
+router.post('/addConstellation', upload, (req, res) => {
+  const constellation = new Constellation({
+    name: req.body.name,
+    description: req.body.description,
+    image: req.file.filename,
+    stars: req.body.stars
+  });
+
+  constellation.save()
+    .then(() => {
+      req.session.message = {
+        type: 'success',
+        message: 'Constellation added successfully!'
+      };
+      res.redirect('/');
+    })
+    .catch(error => {
+      res.json({ message: error.message, type: 'danger' });
+    })
+});
+
+router.get('/addConstellation', (req, res) => {
+  Star.find()
+    .then(stars => {
+      res.render('add_constellation', {                title: "Edit Star",
+      stars: stars });
+    })
+    .catch(error => {
+      res.json({ message: error.message, type: 'danger' });
+    })
+});
+
+
 //insert star into database
 router.post ("/add", upload,(req, res)=>{
    const star= new Star({
     name: req.body.name,
-    coordinates:req.body.coordinates,
     description:req.body.description,
     image:req.file.filename,
    })
@@ -90,13 +124,11 @@ router.post('/edit/:id', upload,(req,res)=>{
     }
     Star.findByIdAndUpdate(id, {
         name: req.body.name,
-        coordinates:req.body.coordinates,
         description:req.body.description,
         image:new_image,
        })
     .then((star) => {
         console.log(        req.body.name,
-            req.body.coordinates,
             req.body.description,
             new_image,)
         req.session.message={
