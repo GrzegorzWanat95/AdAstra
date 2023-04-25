@@ -276,13 +276,17 @@ option {
   display: flex;
   justify-content: flex-start;
   align-content: center;
+  flex-wrap: wrap;
 }
 
 .color-buttons__weather{
   display: flex;
   justify-content: flex-start;
-  align-content: center;
-  align-items: center;
+  align-content: center !important;
+  align-items: center !important;
+  margin-top: 0.2rem;
+  height: 1rem;
+  text-align: top;
 }
 .color-buttons__weather button.active {
   border: 2px solid #fff;
@@ -350,7 +354,6 @@ overflow:hidden;}
 .weather{
   background-color: transparent;
   border: none;
-  height: 1.5rem;
 }
 
 td{
@@ -382,7 +385,7 @@ td{
 }
 
 .bi{
-  margin: 0px !important;
+  margin-right: 0.5rem !important;
   padding: 0px !important;
 }
 
