@@ -227,7 +227,7 @@ option {
 }
 
 .margin-left{
-  margin-left: 1vw;
+  margin-left: 1.2vw;
 }
 
 .row, .dt-row{
@@ -353,7 +353,7 @@ overflow:hidden;}
 }
 .weather{
   background-color: transparent;
-  border: none;
+  border: none !important;
 }
 
 td{
