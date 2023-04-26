@@ -93,7 +93,10 @@
     </div>
   </div>
   </div>
-    <table class="table">
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" checked role="switch" id="SwitchTable">
+  </div>
+    <table class="table" id="stars-table">
       <thead>
         <tr>
           <th>Nazwa</th>
@@ -119,11 +122,39 @@
         <% }) %>
       </tbody>
     </table>
+    <table class="table d-none" id="constellations-table"  >
+      <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody >
+        <% constellations.forEach((row, index) => { %>
+         <tr class="align-middle">
+          <td> <img src="<%=row.image%>"class="small_img" /></td>
+          <td class="record"> <%=row.name  %></td>
+          <td> 
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" checked role="switch" id="flexSwitchCheckDefault">
+            </div>
+            <!-- <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+            <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a> -->
+          </td>
+         </tr>
+        <% }) %>
+      </tbody>
+    </table>
   </div>
-    <% if (stars!=''  ) { %>  
+    <% if (constellations!=''  ) { %>  
     <% }  else { %>
     <h1 class="text-center text-secondary mt-5">Nie znaleziono żadnego obiektu w bazie</h1>>
     <% } %>
+    <% if (stars!=''  ) { %>  
+      <% }  else { %>
+      <h1 class="text-center text-secondary mt-5">Nie znaleziono żadnego obiektu w bazie</h1>>
+      <% } %>
   </div>
 </div> 
  <div class="container__sky" id="container__sky">
@@ -156,6 +187,27 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- <script src="./script.js"></script> -->
     <script>
+//switch tables
+const switchTable = document.getElementById('SwitchTable');
+const starsTable = document.getElementById('stars-table');
+const constellationsTable = document.getElementById('constellations-table');
+
+switchTable.addEventListener('click', function() {
+  if (switchTable.checked) {
+    starsTable.classList.remove('d-none');
+    constellationsTable.classList.add('d-none');
+    console.log('22');
+
+  } else {
+    starsTable.classList.add('d-none');
+    console.log('11');
+    constellationsTable.classList.remove('d-none');
+  }
+});
+
+
+
+
 //moon img
 
 const moons = document.querySelectorAll(".moon");
