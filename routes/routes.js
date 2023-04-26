@@ -20,18 +20,42 @@ var upload = multer({
     storage:storage,
 }).single('image');
 
+// router.get('/', async (req, res) => {
+//     try {
+//       const stars = await Star.find();
+//       res.render('index', {
+//         title: 'Home Page',
+//         stars: stars,
+//       });
+//     } catch (err) {
+//       console.log(err);
+//       res.status(500).send('Wystąpił błąd');
+//     }
+//   });
 router.get('/', async (req, res) => {
-    try {
-      const stars = await Star.find();
-      res.render('index', {
-        title: 'Home Page',
-        stars: stars,
-      });
-    } catch (err) {
-      console.log(err);
-      res.status(500).send('Wystąpił błąd');
-    }
-  });
+  try {
+    const stars = await Star.find();
+    const constellations = await Constellation.find();
+
+    res.render('index', {
+      title: 'Stars and Constellations',
+      stars: stars,
+      constellations: constellations,
+      showStars: true
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+});
+
+
+
+
+
+
+
+
 
 ///Constelations
 router.post('/addConstellation', upload, (req, res) => {
@@ -58,7 +82,7 @@ router.post('/addConstellation', upload, (req, res) => {
 router.get('/addConstellation', (req, res) => {
   Star.find()
     .then(stars => {
-      res.render('add_constellation', {                title: "Edit Star",
+      res.render('add_constellation', {                title: "Add Constellation",
       stars: stars });
     })
     .catch(error => {
