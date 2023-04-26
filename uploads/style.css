@@ -8,6 +8,10 @@
   --primary-color: #12161F;
 }
 
+@media (min-width: 300px) and (max-width: 999px) {
+  display: flex;
+}
+
 .white{
   color: white;
 }
@@ -19,7 +23,6 @@
 .navbar{
   height: 18vh;
   background: linear-gradient(to top,var(--primary-color), #000000);
-
 }
 
 .logo{
@@ -229,6 +232,7 @@ option {
 .margin-left{
   margin-left: 1.2vw;
 }
+
 
 .row, .dt-row{
   display: flex;
