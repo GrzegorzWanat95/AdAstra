@@ -1,185 +1,186 @@
 <%- include('layout/header') %>
 
-    <div class="fog-img fog-img-first"></div>
-    <div class="fog-img fog-img-second"></div>
+    <!--<div class="fog-img fog-img-first"></div>
+    <div class="fog-img fog-img-second"></div>-->
 <section class="rain snow">
 
       
 
 <div class="page__frame">
-<div class="container__list">
-  <div id="star-list" class="list__frame">
-    <% if (message) { %>
-     <div class=" alert alert-dismissible fade show alert-<%= message.type %>  " role="alert">
-        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
-        <strong><%= message.message  %></strong>
+  <div class="container__list">
+    <div id="star-list" class="list__frame">
+      <% if (message) { %>
+      <div class=" alert alert-dismissible fade show alert-<%= message.type %>  " role="alert">
+          <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+          <strong><%= message.message  %></strong>
+        </div>
+          <% } %>
+    <div class="settings__panel">
+      <div class="margin-left">
+      <div class="header my-2">Symulator nocnego nieba</div>
+      <div class="color-buttons">
+        <div class="header__mini">Pora:</div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-moon-fill" viewBox="0 0 16 16">
+          <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z"/>
+          <path d="M11.286 1.778a.5.5 0 0 0-.565-.755 4.595 4.595 0 0 0-3.18 5.003 5.46 5.46 0 0 1 1.055.209A3.603 3.603 0 0 1 9.83 2.617a4.593 4.593 0 0 0 4.31 5.744 3.576 3.576 0 0 1-2.241.634c.162.317.295.652.394 1a4.59 4.59 0 0 0 3.624-2.04.5.5 0 0 0-.565-.755 3.593 3.593 0 0 1-4.065-5.422z"/>
+        </svg>
+        <button type="button" class="color-dropdown__option" data-color="#0E0F13"></button>
+        <button type="button" class="color-dropdown__option" data-color="#12161F"></button>
+        <button type="button" class="color-dropdown__option" data-color="#1E2636"></button>
+        <button type="button" class="color-dropdown__option" data-color="#3D4866"></button>
+        <button type="button" class="color-dropdown__option" data-color="#6B7DAD"></button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+          <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg> 
       </div>
-        <% } %>
-  <div class="settings__panel">
-    <div class="margin-left">
-    <div class="header my-2">Symulator nocnego nieba</div>
-    <div class="color-buttons">
-      <div class="header__mini">Pora:</div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-moon-fill" viewBox="0 0 16 16">
-        <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z"/>
-        <path d="M11.286 1.778a.5.5 0 0 0-.565-.755 4.595 4.595 0 0 0-3.18 5.003 5.46 5.46 0 0 1 1.055.209A3.603 3.603 0 0 1 9.83 2.617a4.593 4.593 0 0 0 4.31 5.744 3.576 3.576 0 0 1-2.241.634c.162.317.295.652.394 1a4.59 4.59 0 0 0 3.624-2.04.5.5 0 0 0-.565-.755 3.593 3.593 0 0 1-4.065-5.422z"/>
-      </svg>
-      <button type="button" class="color-dropdown__option" data-color="#0E0F13"></button>
-      <button type="button" class="color-dropdown__option" data-color="#12161F"></button>
-      <button type="button" class="color-dropdown__option" data-color="#1E2636"></button>
-      <button type="button" class="color-dropdown__option" data-color="#3D4866"></button>
-      <button type="button" class="color-dropdown__option" data-color="#6B7DAD"></button>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
-        <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
-      </svg> 
-    </div>
-    <div class="color-buttons">     
-    <div class="color-buttons__weather">
-      <div class="header__mini">Zachmurzenie:</div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-minus-fill" viewBox="0 0 16 16">
-          <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zM6 7.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1z"/>
+      <div class="color-buttons">     
+      <div class="color-buttons__weather">
+        <div class="header__mini">Zachmurzenie:</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-minus-fill" viewBox="0 0 16 16">
+            <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zM6 7.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1z"/>
+          </svg>
+        <button type="button" id="clearsky" class=""></button>
+        <button type="button" class="clouds-toggle " data-id="clouds1"></button>
+        <button type="button" class="clouds-toggle " data-id="clouds2"></button>
+        <button type="button" class="clouds-toggle " data-id="clouds3"></button>
+        <button type="button" class="clouds-toggle " data-id="clouds4"></button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-plus-fill" viewBox="0 0 16 16">
+          <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm.5 4v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
         </svg>
-      <button type="button" id="clearsky" class=""></button>
-      <button type="button" class="clouds-toggle " data-id="clouds1"></button>
-      <button type="button" class="clouds-toggle " data-id="clouds2"></button>
-      <button type="button" class="clouds-toggle " data-id="clouds3"></button>
-      <button type="button" class="clouds-toggle " data-id="clouds4"></button>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-plus-fill" viewBox="0 0 16 16">
-        <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm.5 4v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
-      </svg>
-    </div>
-    <div class="color-buttons__weather">
-      <div class="header__mini">Rodzaj opadów:</div>
-      <button type="button" class="weather" id="toggle-rain">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-drizzle" viewBox="0 0 16 16">
-          <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm-3.5 1.5a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm.747-8.498a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973zM8.5 2a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 2z"/>
+      </div>
+      <div class="color-buttons__weather">
+        <div class="header__mini">Rodzaj opadów:</div>
+        <button type="button" class="weather" id="toggle-rain">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-drizzle" viewBox="0 0 16 16">
+            <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm-3.5 1.5a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm.747-8.498a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973zM8.5 2a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 2z"/>
+          </svg>
+        </button>
+        <button type="button" class="weather" id="toggle-snow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-snow" viewBox="0 0 16 16">
+            <path d="M13.405 4.277a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10.25H13a3 3 0 0 0 .405-5.973zM8.5 1.25a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1-.001 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 1.25zM2.625 11.5a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm2.75 2a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm5.5 0a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm-2.75-2a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm5.5 0a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="color-buttons__weather">
+        <div class="header__mini">Faza&nbsp;księżyca:</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
+          </svg>
+        <!-- <button type="button" class="moons-toggle " data-id="no-moon"></button> -->
+        <button type="button" class="moons-toggle " data-id="moons0"></button>
+        <button type="button" class="moons-toggle " data-id="moons1"></button>
+        <button type="button" class="moons-toggle " data-id="moons2"></button>
+        <button type="button" class="moons-toggle " data-id="moons3"></button>
+        <button type="button" class="moons-toggle " data-id="moons4"></button>
+        <button type="button" class="moons-toggle " data-id="moons5"></button>
+        <button type="button" class="moons-toggle " data-id="moons6"></button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+          <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
         </svg>
-      </button>
-      <button type="button" class="weather" id="toggle-snow">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-snow" viewBox="0 0 16 16">
-          <path d="M13.405 4.277a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10.25H13a3 3 0 0 0 .405-5.973zM8.5 1.25a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1-.001 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 1.25zM2.625 11.5a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm2.75 2a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm5.5 0a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm-2.75-2a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm5.5 0a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25z"/>
+      </div>
+      <div class="color-buttons__weather">
+        <div class="header__mini">Mgła:</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-minus-fill" viewBox="0 0 16 16">
+            <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zM6 7.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1z"/>
+          </svg>
+        <button type="button" class=" fog"  data-id="fog-0"></button>
+        <button type="button" class=" fog" data-id="fog-1"></button>
+        <button type="button" class=" fog" data-id="fog-2"></button>
+        <button type="button" class=" fog" data-id="fog-3"></button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-plus-fill" viewBox="0 0 16 16">
+          <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm.5 4v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
         </svg>
-      </button>
+      </div>
     </div>
-    <div class="color-buttons__weather">
-      <div class="header__mini">Faza&nbsp;księżyca:</div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
-        </svg>
-      <!-- <button type="button" class="moons-toggle " data-id="no-moon"></button> -->
-      <button type="button" class="moons-toggle " data-id="moons0"></button>
-      <button type="button" class="moons-toggle " data-id="moons1"></button>
-      <button type="button" class="moons-toggle " data-id="moons2"></button>
-      <button type="button" class="moons-toggle " data-id="moons3"></button>
-      <button type="button" class="moons-toggle " data-id="moons4"></button>
-      <button type="button" class="moons-toggle " data-id="moons5"></button>
-      <button type="button" class="moons-toggle " data-id="moons6"></button>
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
-        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
-      </svg>
     </div>
-    <div class="color-buttons__weather">
-      <div class="header__mini">Mgła:</div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-minus-fill" viewBox="0 0 16 16">
-          <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zM6 7.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1z"/>
-        </svg>
-      <button type="button" class=" fog"  data-id="fog-0"></button>
-      <button type="button" class=" fog" data-id="fog-1"></button>
-      <button type="button" class=" fog" data-id="fog-2"></button>
-      <button type="button" class=" fog" data-id="fog-3"></button>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-plus-fill" viewBox="0 0 16 16">
-        <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm.5 4v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
-      </svg>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" checked role="switch" id="SwitchTable">
     </div>
-  </div>
-  </div>
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" checked role="switch" id="SwitchTable">
-  </div>
-    <table class="table" id="stars-table">
-      <thead>
-        <tr>
-          <th>Nazwa</th>
-          <th>Współrzędne</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody >
-        <% stars.forEach((row, index) => { %>
-         <tr class="align-middle">
-          <td> <img src="<%=row.image%>"class="small_img" /></td>
-          <td class="record"> <%=row.name  %></td>
-          <td> <%=row.coordinate  %></td>
-          <td> 
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" checked role="switch" id="flexSwitchCheckDefault">
-            </div>
-            <!-- <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-            <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a> -->
-          </td>
-         </tr>
-        <% }) %>
-      </tbody>
-    </table>
-    <table class="table d-none" id="constellations-table"  >
-      <thead>
-        <tr>
-          <th>Nazwa</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody >
-        <% constellations.forEach((row, index) => { %>
-         <tr class="align-middle">
-          <td> <img src="<%=row.image%>"class="small_img" /></td>
-          <td class="record"> <%=row.name  %></td>
-          <td> 
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" checked role="switch" id="flexSwitchCheckDefault">
-            </div>
-            <!-- <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-            <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a> -->
-          </td>
-         </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  </div>
-    <% if (constellations!=''  ) { %>  
-    <% }  else { %>
-    <h1 class="text-center text-secondary mt-5">Nie znaleziono żadnego obiektu w bazie</h1>>
-    <% } %>
-    <% if (stars!=''  ) { %>  
+      <table class="table" id="stars-table">
+        <thead>
+          <tr>
+            <th>Nazwa</th>
+            <th>Współrzędne</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody >
+          <% stars.forEach((row, index) => { %>
+          <tr class="align-middle">
+            <td> <img src="<%=row.image%>"class="small_img" /></td>
+            <td class="record"> <%=row.name  %></td>
+            <td> <%=row.coordinate  %></td>
+            <td> 
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" checked role="switch" id="flexSwitchCheckDefault">
+              </div>
+              <!-- <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+              <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a> -->
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <table class="table d-none" id="constellations-table"  >
+        <thead>
+          <tr>
+            <th>Nazwa</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody >
+          <% constellations.forEach((row, index) => { %>
+          <tr class="align-middle">
+            <td> <img src="<%=row.image%>"class="small_img" /></td>
+            <td class="record"> <%=row.name  %></td>
+            <td> 
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" checked role="switch" id="flexSwitchCheckDefault">
+              </div>
+              <!-- <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+              <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a> -->
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+      <% if (constellations!=''  ) { %>  
       <% }  else { %>
       <h1 class="text-center text-secondary mt-5">Nie znaleziono żadnego obiektu w bazie</h1>>
       <% } %>
-  </div>
+      <% if (stars!=''  ) { %>  
+        <% }  else { %>
+        <h1 class="text-center text-secondary mt-5">Nie znaleziono żadnego obiektu w bazie</h1>>
+        <% } %>
+    </div>
 </div> 
- <div class="container__sky" id="container__sky">
-	<div class="clouds clouds__1"></div>
-  <img id="clouds1" class="clouds" src="cloud__1-min.png" alt="cloud">
-  <img id="clouds2" class="clouds" src="cloud__2-min.png" alt="cloud">
-  <img id="clouds3" class="clouds" src="cloud__3-min.png" alt="cloud">
-  <img id="clouds4" class="clouds" src="cloud__4-min.png" alt="cloud">
-
-  <img id="moon-0" class="moon" src="moon0.png" alt="moon">
-  <img id="moon-1" class="moon" src="moon1.png" alt="moon">
-  <img id="moon-2" class="moon" src="moon2.png" alt="moon">
-  <img id="moon-3" class="moon" src="moon3.png" alt="moon">
-  <img id="moon-4" class="moon" src="moon4.png" alt="moon">
-  <img id="moon-5" class="moon" src="moon5.png" alt="moon">
-  <img id="moon-6" class="moon" src="moon6.png" alt="moon">
 
 
-  <% stars.forEach((row, index) => { %>
-    <div class="star" id="star-<%= index + 1 %>" data-id="<%= row._id %>">
-      <p class="name"><%= row.name %></p>
-    </div>
-  <% }) %>
-    </div>
+<div class="right__content">
+  <div class="container__sky" id="container__sky">
+        <div class="clouds clouds__1"></div>
+        <img id="clouds1" class="clouds" src="cloud__1-min.png" alt="cloud">
+        <img id="clouds2" class="clouds" src="cloud__2-min.png" alt="cloud">
+        <img id="clouds3" class="clouds" src="cloud__3-min.png" alt="cloud">
+        <img id="clouds4" class="clouds" src="cloud__4-min.png" alt="cloud">
 
+        <img id="moon-0" class="moon" src="moon0.png" alt="moon">
+        <img id="moon-1" class="moon" src="moon1.png" alt="moon">
+        <img id="moon-2" class="moon" src="moon2.png" alt="moon">
+        <img id="moon-3" class="moon" src="moon3.png" alt="moon">
+        <img id="moon-4" class="moon" src="moon4.png" alt="moon">
+        <img id="moon-5" class="moon" src="moon5.png" alt="moon">
+        <img id="moon-6" class="moon" src="moon6.png" alt="moon">
+      <% stars.forEach((row, index) => { %>
+        <div class="star" id="star-<%= index + 1 %>" data-id="<%= row._id %>">
+          <p class="name"><%= row.name %></p>
+        </div>
+      <% }) %>
+  </div>
+</div>
 </div>
 </section>
 
@@ -191,30 +192,21 @@
 const switchTable = document.getElementById('SwitchTable');
 const starsTable = document.getElementById('stars-table');
 const constellationsTable = document.getElementById('constellations-table');
-
 switchTable.addEventListener('click', function() {
   if (switchTable.checked) {
     starsTable.classList.remove('d-none');
     constellationsTable.classList.add('d-none');
     console.log('22');
-
   } else {
     starsTable.classList.add('d-none');
     console.log('11');
     constellationsTable.classList.remove('d-none');
   }
 });
-
-
-
-
 //moon img
-
 const moons = document.querySelectorAll(".moon");
 const moonToggles = document.querySelectorAll(".moons-toggle");
-
 const lastSelectedIndex = localStorage.getItem("lastSelectedIndex");
-
 for (let i = 0; i < moons.length; i++) {
   if (lastSelectedIndex && i == lastSelectedIndex) {
     moons[i].classList.add("active");
@@ -222,11 +214,9 @@ for (let i = 0; i < moons.length; i++) {
     moons[i].classList.remove("active");
   }
 }
-
 moonToggles.forEach((toggle) => {
   toggle.addEventListener("click", () => {
     const index = toggle.getAttribute("data-id").slice(-1);
-
     for (let i = 0; i < moons.length; i++) {
       moons[i].classList.remove("active");
     }
@@ -238,38 +228,28 @@ moonToggles.forEach((toggle) => {
     toggle.classList.add("active");
   });
 });
-
-
-
-
-
 //fog opacity
 const buttons = document.querySelectorAll('.fog');
 const opacityValues = ['0%', '30%', '50%', '75%', '100%'];
 let activeButton = null;
-
 buttons.forEach((button, index) => {
   button.addEventListener('click', () => {
     const id = button.getAttribute('data-id');
     const fogImg = document.querySelector('.fog-img');
     const opacity = opacityValues[id.charAt(id.length - 1)];
     fogImg.style.opacity = opacity;
-
     buttons.forEach((button) => {
       button.classList.remove('active');
     });
     button.classList.add('active');
-
     localStorage.setItem('opacity', opacity);
     activeButton = button;
   });
 });
-
 const savedOpacity = localStorage.getItem('opacity');
 if (savedOpacity !== null) {
   const fogImg = document.querySelector('.fog-img');
   fogImg.style.opacity = savedOpacity;
-
   buttons.forEach((button) => {
     if (button.getAttribute('data-id') === 'fog-' + opacityValues.indexOf(savedOpacity)) {
       button.classList.add('active');
@@ -277,18 +257,13 @@ if (savedOpacity !== null) {
     }
   });
 }
-
 if (activeButton !== null) {
   activeButton.classList.add('active');
 }
-
-
-
 //clouds
 const toggles = document.querySelectorAll('.clouds-toggle');
 const clouds = document.querySelectorAll('.clouds');
 const clearSkyButton = document.querySelector("#clearsky");
-
 toggles.forEach((toggle) => {
   toggle.addEventListener('click', () => {
     const id = toggle.getAttribute('data-id');
@@ -310,7 +285,6 @@ toggles.forEach((toggle) => {
     clearSkyButton.classList.remove('active');
   });
 });
-
 clearSkyButton.addEventListener("click", () => {
   const cloudsImages = document.querySelectorAll(".clouds");
   cloudsImages.forEach((img) => {
@@ -324,7 +298,6 @@ clearSkyButton.addEventListener("click", () => {
   });
   clearSkyButton.classList.add('active');
 });
-
 const activeCloudId = localStorage.getItem('activeCloud');
 if (activeCloudId) {
   clouds.forEach((cloud) => {
@@ -344,18 +317,12 @@ if (activeCloudId) {
 } else {
   clearSkyButton.classList.add('active');
 }
-
-
-
-
 var nbDrop = 100;
 var raining = false;
 var snowing = false;
-
 function randRange(minNum, maxNum) {
   return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
 }
-
 function createRain() {
   for (i = 1; i < nbDrop; i++) {
     var dropLeft = randRange(0, 2600);
@@ -365,7 +332,6 @@ function createRain() {
     $('#drop' + i).css('top', dropTop);
   }
 }
-
 function createSnow() {
   for (i = 1; i < nbDrop; i++) {
     var dropLeft = randRange(0, 2600);
@@ -375,7 +341,6 @@ function createSnow() {
     $('#dropsnow' + i).css('top', dropTop);
   }
 }
-
 function toggleRain() {
   if (!raining) {
     createRain();
@@ -389,7 +354,6 @@ function toggleRain() {
     $('#toggle-rain path').attr('d', 'M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm-3.5 1.5a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm.747-8.498a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973zM8.5 2a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 2z');
   }
 }
-
 function toggleSnow() {
   if (!snowing) {
     createSnow();
@@ -403,20 +367,14 @@ function toggleSnow() {
     $('#toggle-snow path').attr('d', 'M13.405 4.277a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10.25H13a3 3 0 0 0 .405-5.973zM8.5 1.25a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1-.001 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 1.25zM2.625 11.5a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm2.75 2a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm5.5 0a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm-2.75-2a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25zm5.5 0a.25.25 0 0 1 .25.25v.57l.501-.287a.25.25 0 0 1 .248.434l-.495.283.495.283a.25.25 0 0 1-.248.434l-.501-.286v.569a.25.25 0 1 1-.5 0v-.57l-.501.287a.25.25 0 0 1-.248-.434l.495-.283-.495-.283a.25.25 0 0 1 .248-.434l.501.286v-.569a.25.25 0 0 1 .25-.25z');
   }
 }
-
-
 if (localStorage.getItem("raining") === "true") {
   toggleRain();
 }
-
 if (localStorage.getItem("snowing") === "true") {
   toggleSnow();
 }
-
 $('#toggle-rain').click(toggleRain);
 $('#toggle-snow').click(toggleSnow);
-
-
 //theme controller
 const colorButtons = document.querySelectorAll('.color-buttons button');
 const root = document.documentElement;
@@ -441,9 +399,6 @@ if (savedColor) {
   const activeButton = document.querySelector(`[data-color="${savedColor}"]`);
   activeButton.classList.add('active');
 }
-
-
-
 //filter
 const checkboxes = document.querySelectorAll('.form-check-input');
 checkboxes.forEach(checkbox => {
@@ -452,7 +407,6 @@ checkboxes.forEach(checkbox => {
 function filterStars() {
   const checkboxes = document.querySelectorAll('.form-check-input');
   const stars = document.querySelectorAll('.star');
-
   checkboxes.forEach((checkbox, index) => {
     if (checkbox.checked) {
       stars[index].style.display = 'block';
@@ -461,23 +415,18 @@ function filterStars() {
     }
   });
 }
-
 //draggable star
 $(document).ready(function() {
     $(".star").draggable({
         containment: ".container__sky"
     });
-
     $(".star").on("dragstop", function() {
         var position = $(this).position();
-
         localStorage.setItem($(this).attr("id"), JSON.stringify(position));
     });
-
     $(".star").each(function() {
         var id = $(this).attr("id");
         var position = JSON.parse(localStorage.getItem(id));
-
         if (position !== null) {
             $(this).css({
                 top: position.top,
@@ -485,17 +434,14 @@ $(document).ready(function() {
             });
         }
     });
-
     function scaleStars() {
         var skyHeight = $(".container__sky").height();
         var skyWidth = $(".container__sky").width();
-
         $(".star").each(function() {
             var starWidth = skyWidth * (Math.random() * 0.006) + 0.002; 
             var starHeight = starWidth; 
             var starLeft = parseFloat($(this).css("left")) / skyWidth; 
             var starTop = parseFloat($(this).css("top")) / skyHeight; 
-
             $(this).css({
                 "width": starWidth,
                 "height": starHeight,
@@ -504,17 +450,14 @@ $(document).ready(function() {
             });
         });
     }
-
     function displayMoon(){
         var skyHeight = $(".container__sky").height();
         var skyWidth = $(".container__sky").width();
-
         $(".star").each(function() {
             var starWidth = skyWidth * (Math.random() * 0.006) + 0.002; 
             var starHeight = starWidth; 
             var starLeft = parseFloat($(this).css("left")) / skyWidth; 
             var starTop = parseFloat($(this).css("top")) / skyHeight; 
-
             $(this).css({
                 "width": starWidth,
                 "height": starHeight,
@@ -523,11 +466,8 @@ $(document).ready(function() {
             });
         });
     }
-
-
     scaleStars();
     $(window).resize(scaleStars);
-
     function blinkStars() {
   setTimeout(function() {
     $(".star").addClass("blink");
@@ -537,23 +477,17 @@ $(document).ready(function() {
     }, 600);
   }, 2000 + Math.random() * 600);
 }
-
     blinkStars(); 
-
 });
-
-
 const starsDivs = document.querySelectorAll('.star');
 starsDivs.forEach(starDiv => {
   starDiv.addEventListener('dblclick', () => {
     const starId = starDiv.dataset.id;
-
     // Wykonanie żądania AJAX, aby pobrać szczegóły danej gwiazdy
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
         const starDetails = JSON.parse(this.responseText);
-
         // Wyświetlenie szczegółów danej gwiazdy w divie z klasą "container__sky"
         const containerSkyDiv = document.querySelector('.container__sky');
         containerSkyDiv.innerHTML = `
@@ -578,7 +512,6 @@ starsDivs.forEach(starDiv => {
             </div>
           </div>
         `;
-
         const backButton = document.querySelector('.back-button');
         backButton.addEventListener('click', () => {
           window.location.reload();
@@ -591,13 +524,6 @@ starsDivs.forEach(starDiv => {
 });
     </script>
 <%- include('layout/footer') %>
-
-
-
-
-
-
-
 
 
 
