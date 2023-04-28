@@ -3,7 +3,7 @@ const router = express.Router();
 const Star = require('../models/stars');
 const Constellation = require('../models/constellations');
 const multer = require('multer');
-const { error } = require("console");
+const { error, debug } = require("console");
 const tars = require("../models/stars");
 const fs = require("fs");
 
@@ -35,12 +35,13 @@ var upload = multer({
 router.get('/', async (req, res) => {
   try {
     const stars = await Star.find();
-    const constellations = await Constellation.find();
-
+    const constellations = await Constellation.find().populate('stars');
+    const constellationStars = constellations.flatMap(constellation => constellation.stars);
     res.render('index', {
       title: 'Stars and Constellations',
       stars: stars,
       constellations: constellations,
+      constellationStars: constellationStars,
       showStars: true
     });
   } catch (err) {
@@ -48,7 +49,6 @@ router.get('/', async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
-
 
 
 
@@ -68,6 +68,12 @@ router.post('/addConstellation', upload, (req, res) => {
 
   constellation.save()
     .then(() => {
+      return Star.updateOne(
+        { _id: { $in: req.body.stars } },
+        { $push: { constellations: constellation._id } }
+      );
+    })
+    .then(() => {
       req.session.message = {
         type: 'success',
         message: 'Constellation added successfully!'
@@ -76,7 +82,7 @@ router.post('/addConstellation', upload, (req, res) => {
     })
     .catch(error => {
       res.json({ message: error.message, type: 'danger' });
-    })
+    });
 });
 
 router.get('/addConstellation', (req, res) => {
@@ -87,7 +93,7 @@ router.get('/addConstellation', (req, res) => {
     })
     .catch(error => {
       res.json({ message: error.message, type: 'danger' });
-    })
+    }) 
 });
 
 
