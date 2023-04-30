@@ -89,7 +89,7 @@
   flex-wrap:nowrap;
   margin: 0px !important;
   padding: 0px !important;
-  background-color: inherit;
+  background-color: var(--primary-color);
 }
 
 .page__frame__add{
@@ -113,6 +113,7 @@
 .right__content{
   display: flex;
   width: 68%;
+  height: 75vh;
   background-color:var(--primary-color);
   margin: 0px !important;
   padding: 0px !important;
