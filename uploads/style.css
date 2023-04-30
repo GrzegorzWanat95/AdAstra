@@ -302,13 +302,28 @@ option {
   margin-left: 0.5rem;
 }
 
-.table{
-  width: 100%;
-  margin: 0px !important;
-  padding: 0px !important;
+@media (min-width: 300px) and (max-width: 999px) {
+  .table{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+}
+
+@media (min-width: 1350px) {
+  .table{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
 }
 
 .dataTable, .no-footer{
+  display: flex;
   width: 100%;
   margin: 0px !important;
   padding: 0px !important;
@@ -316,6 +331,7 @@ option {
 
 .dataTables_length{
   display: flex;
+  flex-wrap: wrap;
   width: 100px;
 }
 
@@ -324,6 +340,16 @@ option {
   margin-right: 1rem;
   width: 100%;
   margin-top: 0px;
+}
+
+thead{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+tbody{
+  width: 100%;
 }
 
 .pagination{
@@ -349,6 +375,7 @@ option {
     align-content: center;
     align-items: center;
     text-align: start;
+    width: 100%;
   }
 }
 
@@ -377,16 +404,32 @@ option {
   }
 }
 
-.dataTables_wrappe, .dt-bootstrap5, .no-footer{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-content: center;
-  justify-items: start;
-  width: 100%;
-  margin: 0px !important;
-  padding: 0px !important;
+@media (min-width: 300px) and (max-width: 999px) {
+  .dataTables_wrapper, .dt-bootstrap5, .no-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-content: center;
+    justify-items: start;
+    width: 100%;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
 }
+
+@media (min-width: 1350px) {
+  .dataTables_wrapper, .dt-bootstrap5, .no-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-content: center;
+    justify-items: start;
+    width: 100%;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+}
+
 
 .paginate_button, .dataTables_paginate, .paging_simple_numbers, .paginate_button, .next, .previous, .disabled, .page-item, .page-link{
   background-color: inherit !important;
@@ -445,7 +488,6 @@ option {
     width: 100%;
   }
 }
-
 
 .color-buttons__weather button.active {
   border: 2px solid #fff;
