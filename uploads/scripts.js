@@ -181,8 +181,8 @@ function createRain() {
 }
 function createSnow() {
   for (i = 1; i < nbDrop; i++) {
-    var dropLeft = randRange(0, 2600);
-    var dropTop = randRange(-1000, 1400);
+    var dropLeft = randRange(0, window.innerWidth);
+    var dropTop = randRange(-1000, window.innerHeight);
     $('.snow').append('<div class="dropsnow" id="dropsnow' + i + '"></div>');
     $('#dropsnow' + i).css('left', dropLeft);
     $('#dropsnow' + i).css('top', dropTop);

@@ -522,10 +522,15 @@ overflow-x: hidden;
   height: 5px; 
   border-radius: 50%;
   position: absolute;
-  bottom: 200px;
   animation: fall 3s linear infinite;
   -moz-animation: fall .9s linear infinite;
   will-change: transform;
+  overflow: hidden;
+}
+.snow {
+  position: relative;
+  overflow: hidden;
+  height: auto;
 }
 /* animate the drops*/
 @-webkit-keyframes fall {
