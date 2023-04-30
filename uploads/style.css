@@ -3,7 +3,6 @@
   font-family: 'Nunito Sans', sans-serif;
   text-transform: uppercase;
   color: white;
-  border: 1px solid red;
 }
 :root {
   --primary-color: #12161F;
@@ -82,7 +81,7 @@
 
 .page__frame{
   width: 100%;
-  height: auto;
+  height: 90vh;
   display:flex;
   justify-content: center;
   align-items: flex-start;
@@ -90,6 +89,7 @@
   margin: 0px !important;
   padding: 0px !important;
   background-color: var(--primary-color);
+  overflow: hidden;
 }
 
 .page__frame__add{
@@ -104,8 +104,7 @@
 
 .container__list{
   display: flex;
-  height: auto;
-  min-height: 75vh;
+  min-height: 90vh;
   background: var(--primary-color);
   width: 38%;
 }
@@ -113,7 +112,7 @@
 .right__content{
   display: flex;
   width: 68%;
-  height: 75vh;
+  height: 90vh;
   background-color:var(--primary-color);
   margin: 0px !important;
   padding: 0px !important;
@@ -121,7 +120,7 @@
 }
 
 .container__sky{
-  height: 100% !important;
+  height: 90vh;
   width: 100%;
   margin: 0px !important;
   padding: 0px !important;
@@ -601,13 +600,15 @@ a:hover {
 }
 
 .fog-img {
-  position: absolute;
+  position: fixed;
+  top: 0;
   height: 100vh;
   width: 300vw;
   z-index: 1;
   opacity: 0%;
   pointer-events: none;
   filter: blur(5px);
+  overflow-x: hidden !important;
 }
 
 .fog-img-first {
@@ -616,6 +617,7 @@ a:hover {
   background-size: contain;
   background-position: center;
   animation: marquee 60s linear infinite;
+  overflow-x: hidden !important;
 }
 
 .fog-img-second {
@@ -624,6 +626,7 @@ a:hover {
   background-size: contain;
   background-position: center;
   animation: marquee 30s linear infinite;
+  overflow-x: hidden !important;
 }
 
 @keyframes marquee {
