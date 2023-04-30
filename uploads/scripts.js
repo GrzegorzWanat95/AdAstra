@@ -108,11 +108,14 @@ if (activeButton !== null) {
   activeButton.classList.add('active');
 }
 //clouds
+
 const toggles = document.querySelectorAll('.clouds-toggle');
 const clouds = document.querySelectorAll('.clouds');
 const clearSkyButton = document.querySelector("#clearsky");
 toggles.forEach((toggle) => {
   toggle.addEventListener('click', () => {
+    const dropsnow = document.querySelectorAll('.dropsnow');
+    const drop = document.querySelectorAll('.drop');
     const id = toggle.getAttribute('data-id');
     clouds.forEach((cloud) => {
       if (cloud.id === id) {
@@ -130,9 +133,20 @@ toggles.forEach((toggle) => {
       }
     });
     clearSkyButton.classList.remove('active');
+    dropsnow.forEach(element => {
+      element.classList.remove('hidden');
+    });
+    
+    drop.forEach(element => {
+      element.classList.remove('hidden');
+    });
+    document.querySelector("#toggle-rain").disabled = false;
+    document.querySelector("#toggle-snow").disabled = false; 
   });
 });
 clearSkyButton.addEventListener("click", () => {
+  const dropsnow = document.querySelectorAll('.dropsnow');
+  const drop = document.querySelectorAll('.drop');
   const cloudsImages = document.querySelectorAll(".clouds");
   cloudsImages.forEach((img) => {
     if (img.classList.contains("active")) {
@@ -144,6 +158,15 @@ clearSkyButton.addEventListener("click", () => {
     toggle.classList.remove('active');
   });
   clearSkyButton.classList.add('active');
+  dropsnow.forEach(element => {
+    element.classList.add('hidden');
+  });
+  
+  drop.forEach(element => {
+    element.classList.add('hidden');
+  });
+  document.querySelector("#toggle-rain").disabled = true;
+  document.querySelector("#toggle-snow").disabled = true; 
 });
 const activeCloudId = localStorage.getItem('activeCloud');
 if (activeCloudId) {
@@ -160,10 +183,12 @@ if (activeCloudId) {
     } else {
       toggle.classList.remove('active');
     }
+
   });
 } else {
   clearSkyButton.classList.add('active');
 }
+//rain/snow
 var nbDrop = 100;
 var raining = false;
 var snowing = false;
