@@ -2,11 +2,11 @@
 const constellationCheckboxes = document.querySelectorAll('.constellation');
 
 constellationCheckboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', filterStars);
+  checkbox.addEventListener('change', filterStarsConstellations);
 });
 
-function filterStars() {
-  const stars = document.querySelectorAll('.star-constellation');
+function filterStarsConstellations() {
+  const stars = document.querySelectorAll('.constellationstar');
   constellationCheckboxes.forEach(checkbox => {
     const constellationId = checkbox.getAttribute('data-constellation-id');
     stars.forEach(star => {
@@ -240,7 +240,7 @@ checkboxes.forEach(checkbox => {
 });
 function filterStars() {
   const checkboxes = document.querySelectorAll('.form-check-input');
-  const stars = document.querySelectorAll('.star');
+  const stars = document.querySelectorAll('.starog');
   checkboxes.forEach((checkbox, index) => {
     if (checkbox.checked) {
       stars[index].style.display = 'block';
@@ -261,12 +261,12 @@ $(document).ready(function() {
     $(".star").each(function() {
         var id = $(this).attr("id");
         var position = JSON.parse(localStorage.getItem(id));
-        if (position !== null) {
-            $(this).css({
-                top: position.top,
-                left: position.left
-            });
-        }
+        // if (position !== null) {
+        //     $(this).css({
+        //         top: position.top,
+        //         left: position.left
+        //     });
+        // }
     });
     function scaleStars() {
         var skyHeight = $(".container__sky").height();
