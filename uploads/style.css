@@ -85,7 +85,7 @@
   }
 }
 
-@media (min-width: 1350px) {
+@media (min-width: 990px) {
   .page__frame{
     width: 100%;
     height: auto;
