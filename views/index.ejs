@@ -15,7 +15,7 @@
           <strong><%= message.message  %></strong>
         </div>
           <% } %>
-    <div class="settings__panel">
+     <div class="settings__panel">
       <div class="margin-left">
       <div class="header my-2">Symulator nocnego nieba</div>
       <div class="color-buttons">
@@ -156,37 +156,33 @@
         <h1 class="text-center text-secondary mt-5">Nie znaleziono żadnego obiektu w bazie</h1>>
         <% } %>
     </div>
-</div> 
-
-
-<div class="right__content">
-  <div class="container__sky" id="container__sky">
-        <div class="clouds clouds__1"></div>
-        <img id="clouds1" class="clouds" src="cloud__1-min.png" alt="cloud">
-        <img id="clouds2" class="clouds" src="cloud__2-min.png" alt="cloud">
-        <img id="clouds3" class="clouds" src="cloud__3-min.png" alt="cloud">
-        <img id="clouds4" class="clouds" src="cloud__4-min.png" alt="cloud">
-
-        <img id="moon-0" class="moon" src="moon0.png" alt="moon">
-        <img id="moon-1" class="moon" src="moon1.png" alt="moon">
-        <img id="moon-2" class="moon" src="moon2.png" alt="moon">
-        <img id="moon-3" class="moon" src="moon3.png" alt="moon">
-        <img id="moon-4" class="moon" src="moon4.png" alt="moon">
-        <img id="moon-5" class="moon" src="moon5.png" alt="moon">
-        <img id="moon-6" class="moon" src="moon6.png" alt="moon">
-      <% stars.forEach((row, index) => { %>
-        <div class="star" id="star-<%= index + 1 %>" data-id="<%= row._id %>">
-          <p class="name"><%= row.name %></p>
-        </div>
-      <% }) %>
-      <% constellationStars.forEach((star, index) => { %>
-        <div class="star-constellation" id="star-<%= index + 1 %>" data-id="<%= star._id %>" data-constellation-id="<%= star.constellationId %>">
-          <p class="name"><%= star.name %></p>
-        </div>
-      <% }) %>
-      
   </div>
-</div>
+  <div class="right__content">
+    <div class="container__sky" id="container__sky">
+          <div class="clouds clouds__1"></div>
+          <img id="clouds1" class="clouds" src="cloud__1-min.png" alt="cloud">
+          <img id="clouds2" class="clouds" src="cloud__2-min.png" alt="cloud">
+          <img id="clouds3" class="clouds" src="cloud__3-min.png" alt="cloud">
+          <img id="clouds4" class="clouds" src="cloud__4-min.png" alt="cloud">
+  
+          <img id="moon-0" class="moon" src="moon0.png" alt="moon">
+          <img id="moon-1" class="moon" src="moon1.png" alt="moon">
+          <img id="moon-2" class="moon" src="moon2.png" alt="moon">
+          <img id="moon-3" class="moon" src="moon3.png" alt="moon">
+          <img id="moon-4" class="moon" src="moon4.png" alt="moon">
+          <img id="moon-5" class="moon" src="moon5.png" alt="moon">
+          <img id="moon-6" class="moon" src="moon6.png" alt="moon">
+        <% stars.forEach((row, index) => { %>
+          <div class="star" id="star-<%= index + 1 %>" data-id="<%= row._id %>">
+            <p class="name"><%= row.name %></p>
+          </div>
+        <% }) %>
+        <% constellationStars.forEach((star, index) => { %>
+          <div class="star-constellation" id="star-<%= index + 1 %>" data-id="<%= star._id %>" data-constellation-id="<%= star.constellationId %>">
+            <p class="name"><%= star.name %></p>
+          </div>
+        <% }) %>
+    </div>
 </div>
 </section>
 
