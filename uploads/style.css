@@ -346,10 +346,9 @@ option {
     flex-wrap: wrap;
     justify-content: flex-start;
     justify-items: flex-start;
+    align-content: center;
+    align-items: center;
     text-align: start;
-    width: 100%;
-    margin: 0px !important;
-    padding: 0px !important;
   }
 }
 
@@ -360,8 +359,21 @@ option {
     justify-content: flex-start;
     justify-items: flex-start;
     width: 100%;
-    margin: 0px !important;
-    padding: 0px !important;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 999px) {
+  .col-md-6{
+    display: flex;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1350px) {
+  .col-md-6{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
   }
 }
 
