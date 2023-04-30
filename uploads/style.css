@@ -114,7 +114,6 @@
   height: 100%;
   width: 100%;
   background-size: cover;
-  border: 10px solid green;
 }
 .star {
   position: absolute;
@@ -341,6 +340,7 @@ body {
 background:#0D343A;
 background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,1) ), to(#000000)  );
 background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(0,0,0,1) 100%);
+overflow-x: hidden;
 ;}
 
 
