@@ -26,16 +26,29 @@ function filterStarsConstellations() {
 const switchTable = document.getElementById('SwitchTable');
 const starsTable = document.getElementById('stars-table');
 const constellationsTable = document.getElementById('constellations-table');
+const starogs = document.querySelectorAll('.starog');
+const constellationStars = document.querySelectorAll('.constellationstar');
+
 switchTable.addEventListener('click', function() {
-  if (switchTable.checked) {
-    starsTable.classList.remove('d-none');
-    constellationsTable.classList.add('d-none');
-    console.log('22');
-  } else {
-    starsTable.classList.add('d-none');
-    console.log('11');
-    constellationsTable.classList.remove('d-none');
-  }
+if (switchTable.checked) {
+starsTable.classList.remove('d-none');
+constellationsTable.classList.add('d-none');
+starogs.forEach(function(starog) {
+starog.classList.add('d-none');
+});
+constellationStars.forEach(function(constellationStar) {
+constellationStar.classList.remove('d-none');
+});
+} else {
+starsTable.classList.add('d-none');
+constellationsTable.classList.remove('d-none');
+starogs.forEach(function(starog) {
+starog.classList.remove('d-none');
+});
+constellationStars.forEach(function(constellationStar) {
+constellationStar.classList.add('d-none');
+});
+}
 });
 //moon img
 const moons = document.querySelectorAll(".moon");
