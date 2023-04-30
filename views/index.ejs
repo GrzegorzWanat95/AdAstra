@@ -1,13 +1,14 @@
-<div class="overflow">
 <%- include('layout/header') %>
 
+<!-- śnieg, deszcz, mgła - nakładki -->
 <div class="fog-img fog-img-first"></div>
 <div class="fog-img fog-img-second"></div>
-<section class="rain snow">
+<div class="rain snow">
 
       
-
+<!-- cały content strony -->
 <div class="page__frame">
+  <!--lewe menu-->
   <div class="container__list">
     <div id="star-list" class="list__frame">
       <% if (message) { %>
@@ -92,12 +93,15 @@
           <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm.5 4v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
         </svg>
       </div>
+      <div class="color-buttons__weather">
+        <div class="header__mini__switch">Gwiazdy/Kontelacje:</div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" checked role="switch" id="SwitchTable">
+        </div>
+      </div>
     </div>
     </div>
 
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" checked role="switch" id="SwitchTable">
-    </div>
       <table class="table" id="stars-table">
         <thead>
           <tr>
@@ -186,7 +190,6 @@
     </div>
 </div>
 </div>
-</section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>

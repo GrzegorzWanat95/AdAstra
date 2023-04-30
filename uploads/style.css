@@ -124,8 +124,8 @@
 }
 
 .container__sky{
-  height: 100%;
-  width: 100%;
+  height: 90%;
+  width: 60vw;
   margin: 0px !important;
   padding: 0px !important;
 }
@@ -245,6 +245,16 @@ option {
   margin-right: 0.5rem;
 }
 
+.header__mini__switch{
+  width: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 0.6rem;
+  margin-right: 0.5rem;
+  align-items: center;
+  align-content: center;
+}
+
 .bi{
   margin-right: 0.5rem;
   margin-left: 0.5rem;
@@ -341,6 +351,7 @@ option {
   margin-top: 0.2rem;
   height: 1rem;
   text-align: top;
+  width: 100%;
 }
 .color-buttons__weather button.active {
   border: 2px solid #fff;
@@ -649,4 +660,17 @@ a:hover {
   width: 60px;
   height: 60px;
   filter: brightness(1.5);
+}
+
+.form-switch, .form-check{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+.form-check-input{
+  height: 0.8rem;
+  margin: 0px;
 }
