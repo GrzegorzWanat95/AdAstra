@@ -25,9 +25,24 @@
       height: calc(30px + 6 * ((100vw - 320px) / 680));
       width: calc(30px + 6 * ((100vw - 320px) / 680));
     }
-  .text{
-      font-size: calc(20px + 6 * ((100vw - 320px) / 680));
+  .sorting{
+      font-size: calc(25px + 6 * ((100vw - 320px) / 680));
     }
+  .name{
+    font-size: calc(15px + 6 * ((100vw - 320px) / 680));
+  }
+  .dataTables_paginate, .paging_simple_numbers, .paginate_button, .next, .previous, .disabled, .page-item, .page-link{
+    font-size: calc(15px + 6 * ((100vw - 320px) / 680));
+  }
+  td{
+    font-size: calc(15px + 6 * ((100vw - 320px) / 680));
+  }
+  .details__header{
+    font-size: calc(15px + 6 * ((100vw - 320px) / 680));
+  }
+  .text__field{
+    font-size: calc(15px + 6 * ((100vw - 320px) / 680));
+  }
 }
 
 @media screen and (min-width: 1300px)  {
@@ -41,9 +56,30 @@
       .bi{
         font-size: calc(5px + 6 * ((100vw - 320px) / 680));
       }
-      .text{
-          font-size: calc(28px + 6 * ((100vw - 320px) / 680));
+      .sorting{
+          font-size: calc(5px + 6 * ((100vw - 320px) / 680));
         }
+      label{
+        font-size: calc(5px + 6 * ((100vw - 320px) / 680));
+      }
+      .name{
+        font-size: calc(3px + 6 * ((100vw - 320px) / 680));
+      }
+      .dataTables_info{
+        font-size: calc(3px + 6 * ((100vw - 320px) / 680));
+      }
+      .dataTables_paginate, .paging_simple_numbers, .paginate_button, .next, .previous, .disabled, .page-item, .page-link{
+        font-size: calc(3px + 6 * ((100vw - 320px) / 680));
+      }
+      td{
+        font-size: calc(3px + 6 * ((100vw - 320px) / 680));
+      }
+      .details__header{
+        font-size: calc(3px + 6 * ((100vw - 320px) / 680));
+      }
+      .text__field{
+        font-size: calc(15px + 6 * ((100vw - 320px) / 680));     
+      }
 }
 
 .overflow{
@@ -260,9 +296,9 @@
 
 .name{
   margin-left: 3vh;
-  font-size: 0.6rem;
   display: none;
   background-color: transparent !important;
+  border: 1px solid red;
 }
 
 
@@ -306,7 +342,6 @@
 }
 
 label{
-  font-size: 0.6rem;
   margin-right: 1rem;
 }
 
@@ -328,10 +363,6 @@ label{
 
 option {
   background-color: #12161F;
-}
-
-.sorting{
-  font-size: 0.6rem;
 }
 
 .header{
@@ -407,7 +438,6 @@ option {
 }
 
 .dataTables_info{
-  font-size: 0.6rem;
   margin-right: 1rem;
   width: 100%;
   margin-top: 0px;
@@ -505,8 +535,7 @@ tbody{
 
 .dataTables_paginate, .paging_simple_numbers, .paginate_button, .next, .previous, .disabled, .page-item, .page-link{
   display: flex;
-  height: 1.6rem !important;
-  font-size: 0.6rem !important;
+  height: auto;
   color: white;
   background-color: var(--primary-color);
 }
@@ -635,10 +664,6 @@ overflow-x: hidden;
   border: none !important;
 }
 
-td{
-  font-size: 0.6rem;
-}
-
 .clouds{
   position: absolute;
   width: auto;
@@ -701,7 +726,6 @@ td{
   justify-content: center;
   text-align: center;
   width: 100%;
-  font-size: 1.5rem;
   height: 10%;
 
 }
@@ -750,7 +774,6 @@ td{
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  font-size: 0.8rem;
 }
 
 .button__section{
