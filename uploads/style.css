@@ -279,7 +279,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     justify-items: flex-start;
-    height: 73vh;
+    height: auto;
     background: var(--primary-color);
     width: 32%;
     margin-left: 5vw;
@@ -680,7 +680,6 @@ overflow-x: hidden;
 .drop {
   background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,1) ), to(rgba(255,255,255,0.6))  );
   background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(255,255,255,.6) 100%);
-  
   overflow:hidden;
 	width:1px;
 	height:19px; 
