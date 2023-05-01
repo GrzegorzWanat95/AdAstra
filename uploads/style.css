@@ -9,9 +9,10 @@
 
 @media screen and (min-width: 320px) and (max-width: 1200px) {
   .header{
-  margin-bottom: calc(45px + 6 * ((100vw - 320px) / 680));
+  margin-top: 2rem !important;
+  margin-bottom: calc(50px + 6 * ((100vw - 320px) / 680));
   font-weight: bold;
-  font-size: calc(35px + 6 * ((100vw - 320px) / 680));
+  font-size: calc(45px + 6 * ((100vw - 320px) / 680));
   }
   .header__mini, .header__mini__switch, .form-check-input{
     font-size: calc(30px + 6 * ((100vw - 320px) / 680));
@@ -46,6 +47,18 @@
   .small_img{
     width: 200px !important;
     height: auto !important;
+  }
+  .nav-link{
+    font-size: calc(30px + 6 * ((100vw - 320px) / 680));
+  }
+  .form-label{
+    font-size: calc(30px + 6 * ((100vw - 320px) / 680));
+  }
+  .form-control{
+    font-size: calc(35px + 6 * ((100vw - 320px) / 680));
+  }
+  .default__button__submit{
+    font-size: calc(35px + 6 * ((100vw - 320px) / 680));
   }
 }
 
@@ -87,6 +100,9 @@
       .small_img{
         width: calc(80px + 6 * ((100vw - 320px) / 680)) !important;
         height: auto !important;
+      }
+      .form-label{
+        font-size: calc(15px + 6 * ((100vw - 320px) / 680));     
       }
 }
 
@@ -180,6 +196,18 @@
 }
 
 @media (min-width: 300px) and (max-width: 1200px) {
+  #star-form{
+    width: 80%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #star-form{
+    width: 40%;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 1200px) {
   .page__frame{
     width: 100vw;
     height: auto;
@@ -209,15 +237,30 @@
   }
 }
 
-.page__frame__add{
-  width: 100%;
-  height: 73vh;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  background: linear-gradient(to top,var(--primary-color), #000000);
+@media (min-width: 300px) and (max-width: 1200px) {
+  .page__frame__add{
+    width: 100%;
+    height: 73vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: linear-gradient(to top,var(--primary-color), #000000);
+  }
 }
+
+@media (min-width: 1200px) {
+  .page__frame__add{
+    width: 100%;
+    height: 73vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: linear-gradient(to top,var(--primary-color), #000000);
+  }
+}
+
 
 @media (min-width: 300px) and (max-width: 1200px) {
   .container__list{
@@ -393,7 +436,6 @@ option {
   .header{
     width: 100%;
     height: auto;
-    padding: 0px !important;
     text-align: center;
   }
 }
@@ -885,8 +927,7 @@ thead{
   align-items: center;
   justify-content: center;
   width: 22%;
-  height: 2rem;
-  font-size: 0.6rem;
+  height: auto;
   border: 1px solid white;
   background-color: inherit;
   border-radius: 10%;

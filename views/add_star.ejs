@@ -2,18 +2,18 @@
   <%- include('layout/header') %>
   <div class="page__frame__add">
     <div id="star-form">
-      <h2 class="my-4 white">Dodaj ciało niebieskie</h2>
+      <h2 class="header my-4 white">Dodaj ciało niebieskie</h2>
       <form action="/add" method="post" id="add-form" enctype="multipart/form-data">
         <div class="form-group">
-          <label for="name" class="text-white">Nazwa:</label>
+          <label for="name" class="text-white form-label">Nazwa:</label>
           <input type="text" class="form-control" name="name" required>
         </div>
         <div class="form-group">
-          <label for="description" class="text-white">Opis:</label>
+          <label for="description" class="text-white form-label">Opis:</label>
           <textarea class="form-control" name="description" required></textarea>
         </div>
         <div class="form-group">
-          <label for="image" class="text-white">Wybierz zdjęcie:</label>
+          <label for="image" class="text-white form-label">Wybierz zdjęcie:</label>
           <input class="form-control" type="file" name="image" required>
         </div>
         <div class="button__pad">
