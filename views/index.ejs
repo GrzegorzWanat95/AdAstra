@@ -9,7 +9,7 @@
 <!-- cały content strony -->
 <div class="page__frame">
   <!--lewe menu-->
-  <div class="container__list">
+  <div class="container__list container-fluid">
     <div id="star-list" class="list__frame">
       <% if (message) { %>
       <div class=" alert alert-dismissible fade show alert-<%= message.type %>  " role="alert">
@@ -17,10 +17,9 @@
           <strong><%= message.message  %></strong>
         </div>
           <% } %>
-     <div class="settings__panel">
-      <div class="margin-left">
       <div class="header my-2">Symulator nocnego nieba</div>
       <div class="color-buttons">
+        <div class="color-buttons__weather">
         <div class="header__mini">Pora:</div>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-moon-fill" viewBox="0 0 16 16">
           <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z"/>
@@ -35,6 +34,7 @@
           <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
         </svg> 
       </div>
+    </div>
       <div class="color-buttons">     
       <div class="color-buttons__weather">
         <div class="header__mini">Zachmurzenie:</div>
@@ -100,7 +100,6 @@
         </div>
       </div>
     </div>
-    </div>
     <div  id="stars-table">
       <table class="table" >
         <thead>
@@ -154,7 +153,6 @@
         </tbody>
       </table>
       </div>
-    </div>
       <% if (constellations!=''  ) { %>  
       <% }  else { %>
       <h1 class="text-center text-secondary mt-5">Nie znaleziono żadnego obiektu w bazie</h1>>
@@ -166,7 +164,7 @@
     </div>
   </div>
   <div class="right__content">
-    <div class="container__sky" id="container__sky">
+    <div class="container__sky container-fluid" id="container__sky">
           <div class="clouds clouds__1"></div>
           <img id="clouds1" class="clouds" src="cloud__1-min.png" alt="cloud">
           <img id="clouds2" class="clouds" src="cloud__2-min.png" alt="cloud">
