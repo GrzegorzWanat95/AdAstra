@@ -274,12 +274,12 @@ $(document).ready(function() {
     $(".star").each(function() {
         var id = $(this).attr("id");
         var position = JSON.parse(localStorage.getItem(id));
-        // if (position !== null) {
-        //     $(this).css({
-        //         top: position.top,
-        //         left: position.left
-        //     });
-        // }
+        if (position !== null) {
+            $(this).css({
+                top: position.top,
+                left: position.left
+            });
+        }
     });
     function scaleStars() {
         var skyHeight = $(".container__sky").height();
