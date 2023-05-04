@@ -20,36 +20,39 @@ function filterStarsConstellations() {
     });
   });
 }
-
-
 //switch tables
-const switchTable = document.getElementById('SwitchTable');
-const starsTable = document.getElementById('stars-table');
-const constellationsTable = document.getElementById('constellations-table');
-const starogs = document.querySelectorAll('.starog');
-const constellationStars = document.querySelectorAll('.constellationstar');
+function switchTableHandler() {
+  const switchTable = document.getElementById('SwitchTable');
+  const starsTable = document.getElementById('stars-table');
+  const constellationsTable = document.getElementById('constellations-table');
+  const starogs = document.querySelectorAll('.starog');
+  const constellationStars = document.querySelectorAll('.constellationstar');
 
-switchTable.addEventListener('click', function() {
-if (switchTable.checked) {
-starsTable.classList.remove('d-none');
-constellationsTable.classList.add('d-none');
-starogs.forEach(function(starog) {
-starog.classList.add('d-none');
-});
-constellationStars.forEach(function(constellationStar) {
-constellationStar.classList.remove('d-none');
-});
-} else {
-starsTable.classList.add('d-none');
-constellationsTable.classList.remove('d-none');
-starogs.forEach(function(starog) {
-starog.classList.remove('d-none');
-});
-constellationStars.forEach(function(constellationStar) {
-constellationStar.classList.add('d-none');
-});
+  if (switchTable.checked) {
+    starsTable.classList.remove('d-none');
+    constellationsTable.classList.add('d-none');
+    starogs.forEach(function(starog) {
+      starog.classList.remove('d-none');
+    });
+    constellationStars.forEach(function(constellationStar) {
+      constellationStar.classList.add('d-none');
+    });
+  } else {
+    starsTable.classList.add('d-none');
+    constellationsTable.classList.remove('d-none');
+    starogs.forEach(function(starog) {
+      starog.classList.add('d-none');
+    });
+    constellationStars.forEach(function(constellationStar) {
+      constellationStar.classList.remove('d-none');
+    });
+  }
 }
-});
+
+document.addEventListener('DOMContentLoaded', switchTableHandler);
+const switchTable = document.getElementById('SwitchTable');
+switchTable.addEventListener('click', switchTableHandler);
+
 //moon img
 const moons = document.querySelectorAll(".moon");
 const moonToggles = document.querySelectorAll(".moons-toggle");
@@ -311,68 +314,68 @@ function filterStars() {
 
 //draggable star
 $(document).ready(function() {
-    $(".star").draggable({
-        containment: ".container__sky"
-    });
-    $(".star").on("dragstop", function() {
-        var position = $(this).position();
-    });
-    $(".star").each(function() {
-        var id = $(this).attr("id");
-        var position = JSON.parse(localStorage.getItem(id));
-        if (position !== null) {
-            $(this).css({
-                top: position.top,
-                left: position.left
-            });
-        }
-    });
-    function scaleStars() {
-        var skyHeight = $(".container__sky").height();
-        var skyWidth = $(".container__sky").width();
-        $(".star").each(function() {
-            var starWidth = skyWidth * (Math.random() * 0.006) + 0.002; 
-            var starHeight = starWidth; 
-            var starLeft = parseFloat($(this).css("left")) / skyWidth; 
-            var starTop = parseFloat($(this).css("top")) / skyHeight; 
-            console.log(starWidth+ starHeight+starLeft+starTop );
-            $(this).css({
-                "width": starWidth,
-                "height": starHeight,
-                "left": starLeft * 10 + "%",
-                "top": starTop * 10 + "%"
-            });
-        });
+  $(".star").draggable({
+    containment: ".container__sky"
+  });
+  $(".star").on("dragstop", function() {
+    var position = $(this).position();
+    var containerHeight = $(".container__sky").height();
+    var containerWidth = $(".container__sky").width();
+    var starLeft = (position.left / containerWidth) * 100;
+    var starTop = (position.top / containerHeight) * 100;
+    console.log(starLeft + "l:p" + starTop)
+    localStorage.setItem($(this).attr("id"), JSON.stringify({
+      top: starTop + "%",
+      left: starLeft + "%"
+    }));
+  });
+  $(".star").each(function() {
+    var id = $(this).attr("id");
+    var position = JSON.parse(localStorage.getItem(id));
+    if (position !== null) {
+      var containerHeight = $(".container__sky").height();
+      var containerWidth = $(".container__sky").width();
+      var starLeft = position.left / 100 * containerWidth;
+      var starTop = position.top / 100 * containerHeight;
+      $(this).css({
+        top: starTop + '%',
+        left: starLeft + '%'
+      });
     }
-    // function displayMoon(){
-    //     var skyHeight = $(".container__sky").height();
-    //     var skyWidth = $(".container__sky").width();
-    //     $(".star").each(function() {
-    //         var starWidth = skyWidth * (Math.random() * 0.006) + 0.002; 
-    //         var starHeight = starWidth; 
-    //         var starLeft = parseFloat($(this).css("left")) / skyWidth; 
-    //         var starTop = parseFloat($(this).css("top")) / skyHeight; 
-    //         $(this).css({
-    //             "width": starWidth,
-    //             "height": starHeight,
-    //             "left": starLeft * 100 + "%",
-    //             "top": starTop * 100 + "%"
-    //         });
-    //     });
-    // }
-    scaleStars();
-    $(window).resize(scaleStars);
-    function blinkStars() {
-  setTimeout(function() {
-    $(".star").addClass("blink");
+  });
+  function scaleStars() {
+    var skyHeight = $(".container__sky").height();
+    var skyWidth = $(".container__sky").width();
+    $(".star").each(function() {
+      var starWidth = skyWidth * (Math.random() * 0.006) + 0.005;
+      var starHeight = starWidth;
+      var starLeft = parseFloat($(this).css("left")) / skyWidth * 100;
+      var starTop = parseFloat($(this).css("top")) / skyHeight * 100;
+      $(this).css({
+        "width": starWidth,
+        "height": starHeight,
+        "left": starLeft + "%",
+        "top": starTop + "%"
+      });
+    });
+  }
+
+  scaleStars(); // skaluj po załadowaniu strony
+  $(window).resize(scaleStars);
+
+  function blinkStars() {
     setTimeout(function() {
-      $(".star").removeClass("blink");
-      blinkStars();
-    }, 600);
-  }, 2000 + Math.random() * 600);
-}
-    blinkStars(); 
-});
+      $(".star").addClass("blink");
+      setTimeout(function() {
+        $(".star").removeClass("blink");
+        blinkStars();
+      }, 600);
+    }, 2000 + Math.random() * 600);
+  }
+
+  blinkStars();
+}); 
+
 const starsDivs = document.querySelectorAll('.star');
 starsDivs.forEach(starDiv => {
   starDiv.addEventListener('dblclick', () => {
@@ -416,3 +419,5 @@ starsDivs.forEach(starDiv => {
     xhr.send();
   });
 });
+
+
