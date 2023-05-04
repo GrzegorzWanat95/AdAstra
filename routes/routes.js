@@ -181,7 +181,16 @@ router.get('/details/:id', async (req, res) => {
       res.status(500).send('Wystąpił błąd');
     }
   });
-
+//constellation details
+router.get('/detailsConstellation/:id', async (req, res) => {
+  try {
+    const constellation = await Constellation.findById(req.params.id);
+    res.send(constellation);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Wystąpił błąd');
+  }
+});
 //delete star
 const {promisify} = require('util');
 const unlinkAsync = promisify(fs.unlink);
@@ -203,7 +212,29 @@ router.get('/delete/:id', async (req, res) => {
     res.json({ message: error.message });
   }
 });
-
+//delete constellation
+router.get('/deleteConstellation/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const constellation = await Constellation.findById(id);
+    if (constellation.image !== '') {
+      await unlinkAsync('./uploads/' + constellation.image);
+    }
+    const stars = await Star.find({ constellations: { $in: [id] } });
+    for (const star of stars) {
+      star.constellations = star.constellations.filter(c => c.toString() !== id);
+      await star.save();
+    }
+    await Constellation.findByIdAndRemove(id);
+    req.session.message = {
+      type: "info",
+      message: "Constellation deleted successfully",
+    };
+    res.redirect('/');
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
 
 router.get ("/add", (req, res)=>{
     res.render("add_star", {title:'Add'});
