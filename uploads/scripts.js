@@ -107,63 +107,8 @@ if (savedOpacity !== null) {
 if (activeButton !== null) {
   activeButton.classList.add('active');
 }
-//clouds
-const toggles = document.querySelectorAll('.clouds-toggle');
-const clouds = document.querySelectorAll('.clouds');
-const clearSkyButton = document.querySelector("#clearsky");
-toggles.forEach((toggle) => {
-  toggle.addEventListener('click', () => {
-    const id = toggle.getAttribute('data-id');
-    clouds.forEach((cloud) => {
-      if (cloud.id === id) {
-        cloud.classList.add('active');
-      } else {
-        cloud.classList.remove('active');
-      }
-    });
-    localStorage.setItem('activeCloud', id);
-    toggles.forEach((toggle) => {
-      if (toggle.getAttribute('data-id') === id) {
-        toggle.classList.add('active');
-      } else {
-        toggle.classList.remove('active');
-      }
-    });
-    clearSkyButton.classList.remove('active');
-  });
-});
-clearSkyButton.addEventListener("click", () => {
-  const cloudsImages = document.querySelectorAll(".clouds");
-  cloudsImages.forEach((img) => {
-    if (img.classList.contains("active")) {
-      img.classList.remove("active");
-    }
-  });
-  localStorage.removeItem('activeCloud');
-  toggles.forEach((toggle) => {
-    toggle.classList.remove('active');
-  });
-  clearSkyButton.classList.add('active');
-});
-const activeCloudId = localStorage.getItem('activeCloud');
-if (activeCloudId) {
-  clouds.forEach((cloud) => {
-    if (cloud.id === activeCloudId) {
-      cloud.classList.add('active');
-    } else {
-      cloud.classList.remove('active');
-    }
-  });
-  toggles.forEach((toggle) => {
-    if (toggle.getAttribute('data-id') === activeCloudId) {
-      toggle.classList.add('active');
-    } else {
-      toggle.classList.remove('active');
-    }
-  });
-} else {
-  clearSkyButton.classList.add('active');
-}
+
+//rain snow
 var nbDrop = 100;
 var raining = false;
 var snowing = false;
@@ -222,6 +167,99 @@ if (localStorage.getItem("snowing") === "true") {
 }
 $('#toggle-rain').click(toggleRain);
 $('#toggle-snow').click(toggleSnow);
+
+//clouds
+const toggles = document.querySelectorAll('.clouds-toggle');
+const clouds = document.querySelectorAll('.clouds');
+const clearSkyButton = document.querySelector("#clearsky");
+toggles.forEach((toggle) => {
+  toggle.addEventListener('click', () => {
+    const dropsnow = document.querySelectorAll('.dropsnow');
+    const drop = document.querySelectorAll('.drop');
+    const id = toggle.getAttribute('data-id');
+    clouds.forEach((cloud) => {
+      if (cloud.id === id) {
+        cloud.classList.add('active');
+      } else {
+        cloud.classList.remove('active');
+      }
+    });
+    localStorage.setItem('activeCloud', id);
+    toggles.forEach((toggle) => {
+      if (toggle.getAttribute('data-id') === id) {
+        toggle.classList.add('active');
+      } else {
+        toggle.classList.remove('active');
+      }
+    });
+    clearSkyButton.classList.remove('active');
+    dropsnow.forEach(element => {
+      element.classList.remove('hidden');
+    });
+
+    drop.forEach(element => {
+      element.classList.remove('hidden');
+    });
+    document.querySelector("#toggle-rain").disabled = false;
+    document.querySelector("#toggle-snow").disabled = false; 
+  });
+});
+clearSkyButton.addEventListener("click", () => {
+  const dropsnow = document.querySelectorAll('.dropsnow');
+  const drop = document.querySelectorAll('.drop');
+  const cloudsImages = document.querySelectorAll(".clouds");
+  cloudsImages.forEach((img) => {
+    if (img.classList.contains("active")) {
+      img.classList.remove("active");
+    }
+  });
+  localStorage.removeItem('activeCloud');
+  toggles.forEach((toggle) => {
+    toggle.classList.remove('active');
+  });
+  clearSkyButton.classList.add('active');
+  dropsnow.forEach(element => {
+    element.classList.add('hidden');
+  });
+  drop.forEach(element => {
+    element.classList.add('hidden');
+  });
+  document.querySelector("#toggle-rain").disabled = true;
+  document.querySelector("#toggle-snow").disabled = true; 
+});
+const activeCloudId = localStorage.getItem('activeCloud');
+if (activeCloudId) {
+  clouds.forEach((cloud) => {
+    if (cloud.id === activeCloudId) {
+      cloud.classList.add('active');
+    } else {
+      cloud.classList.remove('active');
+    }
+  });
+  toggles.forEach((toggle) => {
+    if (toggle.getAttribute('data-id') === activeCloudId) {
+      toggle.classList.add('active');
+    } else {
+      toggle.classList.remove('active');
+    }
+  });
+} else {
+  console.log('sadasdasd');
+  const dropsnow = document.querySelectorAll('.dropsnow');
+  const drop = document.querySelectorAll('.drop');
+  clearSkyButton.classList.add('active');
+  if (dropsnow && drop) {
+    dropsnow.forEach(element => {
+      element.classList.add('hidden');
+    });
+    drop.forEach(element => {
+      element.classList.add('hidden');
+    });
+  }
+  document.querySelector("#toggle-rain").disabled = true;
+  document.querySelector("#toggle-snow").disabled = true; 
+  console.log('sadasdasd1');
+}
 //theme controller
 const colorButtons = document.querySelectorAll('.color-buttons button');
 const root = document.documentElement;
@@ -251,17 +289,26 @@ const checkboxes = document.querySelectorAll('.form-check-input');
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('change', filterStars);
 });
+
 function filterStars() {
   const checkboxes = document.querySelectorAll('.form-check-input');
   const stars = document.querySelectorAll('.starog');
+
   checkboxes.forEach((checkbox, index) => {
+    const selectedStars = document.querySelectorAll(`.starog:nth-of-type(${index + 1})`);
+    
     if (checkbox.checked) {
-      stars[index].style.display = 'block';
+      selectedStars.forEach((star) => {
+        star.style.display = 'block';
+      });
     } else {
-      stars[index].style.display = 'none';
+      selectedStars.forEach((star) => {
+        star.style.display = 'none';
+      });
     }
   });
 }
+
 //draggable star
 $(document).ready(function() {
     $(".star").draggable({
@@ -269,7 +316,6 @@ $(document).ready(function() {
     });
     $(".star").on("dragstop", function() {
         var position = $(this).position();
-        localStorage.setItem($(this).attr("id"), JSON.stringify(position));
     });
     $(".star").each(function() {
         var id = $(this).attr("id");
@@ -289,30 +335,31 @@ $(document).ready(function() {
             var starHeight = starWidth; 
             var starLeft = parseFloat($(this).css("left")) / skyWidth; 
             var starTop = parseFloat($(this).css("top")) / skyHeight; 
+            console.log(starWidth+ starHeight+starLeft+starTop );
             $(this).css({
                 "width": starWidth,
                 "height": starHeight,
-                "left": starLeft * 100 + "%",
-                "top": starTop * 100 + "%"
+                "left": starLeft * 10 + "%",
+                "top": starTop * 10 + "%"
             });
         });
     }
-    function displayMoon(){
-        var skyHeight = $(".container__sky").height();
-        var skyWidth = $(".container__sky").width();
-        $(".star").each(function() {
-            var starWidth = skyWidth * (Math.random() * 0.006) + 0.002; 
-            var starHeight = starWidth; 
-            var starLeft = parseFloat($(this).css("left")) / skyWidth; 
-            var starTop = parseFloat($(this).css("top")) / skyHeight; 
-            $(this).css({
-                "width": starWidth,
-                "height": starHeight,
-                "left": starLeft * 100 + "%",
-                "top": starTop * 100 + "%"
-            });
-        });
-    }
+    // function displayMoon(){
+    //     var skyHeight = $(".container__sky").height();
+    //     var skyWidth = $(".container__sky").width();
+    //     $(".star").each(function() {
+    //         var starWidth = skyWidth * (Math.random() * 0.006) + 0.002; 
+    //         var starHeight = starWidth; 
+    //         var starLeft = parseFloat($(this).css("left")) / skyWidth; 
+    //         var starTop = parseFloat($(this).css("top")) / skyHeight; 
+    //         $(this).css({
+    //             "width": starWidth,
+    //             "height": starHeight,
+    //             "left": starLeft * 100 + "%",
+    //             "top": starTop * 100 + "%"
+    //         });
+    //     });
+    // }
     scaleStars();
     $(window).resize(scaleStars);
     function blinkStars() {

@@ -724,6 +724,10 @@ overflow-x: hidden;
 .drop.hidden {
   visibility: hidden;
 }
+.dropsnow.hiddenn,
+.drop.hiddenn {
+  visibility: hidden;
+}
 .snow {
   position: relative;
   overflow: hidden;
@@ -1150,7 +1154,8 @@ a:hover {
 }
 
 #stars-table{
-  display: flex !important;
+   display: flex ;
+  /* na razie usunięte!important */
   flex-wrap: wrap;
   justify-content: flex-start;
   justify-items: flex-start;
