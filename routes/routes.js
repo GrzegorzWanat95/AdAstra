@@ -172,6 +172,68 @@ router.post('/edit/:id', upload,(req,res)=>{
     });
 })
 
+
+
+
+
+// edit Constellation
+router.get('/editConstellation/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const constellation = await Constellation.findById(id).populate('stars');
+    const stars = await Star.find();
+    res.render('edit_constellation', {
+      title: 'Edit Constellation',
+      constellation,
+      stars,
+    });
+  } catch (error) {
+    console.log(error);
+    req.session.message = {
+      type: 'danger',
+      message: error.message,
+    };
+    res.redirect('/');
+  }
+});
+
+// editConstellation post
+router.post('/editConstellation/:id', upload, async (req, res) => {
+  try {
+    const id = req.params.id;
+    let newImage = '';
+    if (req.file) {
+      newImage = req.file.filename;
+      try {
+        await unlinkAsync('/uploads/' + req.body.oldImage);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      newImage = req.body.oldImage;
+    }
+    await Constellation.findByIdAndUpdate(id, {
+      name: req.body.name,
+      description: req.body.description,
+      image: newImage,
+      stars: req.body.stars,
+    });
+    req.session.message = {
+      type: 'success',
+      message: 'Constellation updated successfully',
+    };
+    res.redirect('/');
+  } catch (error) {
+    console.log(error);
+    req.session.message = {
+      type: 'danger',
+      message: error.message,
+    };
+    res.redirect('/');
+  }
+});
+
+
 router.get('/details/:id', async (req, res) => {
     try {
       const star = await Star.findById(req.params.id);
