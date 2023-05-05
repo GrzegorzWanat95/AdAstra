@@ -260,11 +260,26 @@ const unlinkAsync = promisify(fs.unlink);
 router.get('/delete/:id', async (req, res) => {
   try {
     const id = req.params.id;
+
+    const constellations = await Constellation.find({ stars: id });
+    for (const constellation of constellations) {
+      constellation.stars.pull(id);
+      if (constellation.stars.length === 0) {
+        if (constellation.image !== '') {
+          await unlinkAsync('./uploads/' + constellation.image);
+        }
+        await Constellation.findByIdAndRemove(constellation._id);
+      } else {
+        await constellation.save();
+      }
+    }
+
     const star = await Star.findById(id);
     if (star.image !== '') {
       await unlinkAsync('./uploads/' + star.image);
     }
     await Star.findByIdAndRemove(id);
+
     req.session.message = {
       type: "info",
       message: "Star deleted successfully",
@@ -274,6 +289,7 @@ router.get('/delete/:id', async (req, res) => {
     res.json({ message: error.message });
   }
 });
+
 //delete constellation
 router.get('/deleteConstellation/:id', async (req, res) => {
   try {
