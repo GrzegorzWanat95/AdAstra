@@ -96,11 +96,11 @@
       <div class="color-buttons__weather">
         <div class="header__mini__switch">Gwiazdy | Kontelacje:</div>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" checked role="switch" id="SwitchTable">
+          <input class="form-check-input" type="checkbox" checked role="switch" id="SwitchTable" >
         </div>
       </div>
     </div>
-    <div  id="stars-table">
+    <div   id="stars-table">
       <table class="table" >
         <thead>
           <tr>
@@ -184,7 +184,7 @@
           </div>
         <% }) %>
         <% constellationStars.forEach((star, index) => { %>
-          <div class="star constellationstar" id="star-<%= index + 1 %>" data-id="<%= star._id %>" data-constellation-id="<%= star.constellations %>">
+          <div class="star constellationstar" id="star-<%= index + 1 %>" data-id="<%= star._id %>" data-constellation-id="<%= star.constellations %>" data-constellationid="<%= star.constellations %>">
             <p class="name"><%= star.name %></p>
           </div>
         <% }) %>
