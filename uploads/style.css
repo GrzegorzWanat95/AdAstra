@@ -1199,5 +1199,24 @@ td{
   vertical-align:middle !important;
 }
 
+.alert{
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  width: 80%;
+  margin: 0px !important;
+  padding: 0px !important;
+}
 
-
+.alert__text{
+  display: flex;
+  width: auto;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+}
