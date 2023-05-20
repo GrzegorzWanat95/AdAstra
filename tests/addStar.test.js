@@ -18,12 +18,8 @@ describe('Formularz dodawania ciała niebieskiego', function() {
       });
   });
 
-  it('should add a star when the form is submitted', function(done) {
-    const starData = {
-      name: 'Kaus Australis',
-      description: 'Opis gwiazdy Kaus Australis',
-      image: path.join(__dirname, 'path/to/your/image.jpg') // Provide the path to your image file
-    };
+  it('powinien zwracać błąd, jeśli nie podano wymaganego pola', function(done) {
+    const imagePath = '../AdAstra/uploads/moon6.png';
 
     request(app) 
       .post('/add')
