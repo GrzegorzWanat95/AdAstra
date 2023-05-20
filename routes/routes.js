@@ -86,24 +86,30 @@ router.get('/addConstellation', (req, res) => {
 
 
 //insert star into database
-router.post ("/add", upload,(req, res)=>{
-   const star= new Star({
+router.post("/add", upload, (req, res) => {
+  if (!req.body.description||!req.body.name) {
+    return res.status(400).json({ message: "Data field is required!" });
+  }
+
+  const star = new Star({
     name: req.body.name,
-    description:req.body.description,
-    image:req.file.filename,
-   })
-   star.save()
-   .then(() => {
-      req.session.message={
-          type:'success',
-          message:'Star added successfully!'
-      }
-      res.redirect("/")
-   })
-   .catch((error) => {
-      res.json({message: error.message, type:'danger'});
-   })
-})
+    description: req.body.description,
+    image: req.file.filename,
+  });
+
+  star.save()
+    .then(() => {
+      req.session.message = {
+        type: 'success',
+        message: 'Star added successfully!'
+      };
+      res.redirect("/");
+    })
+    .catch((error) => {
+      res.status(500).json({ message: error.message, type: 'danger' });
+    });
+});
+
 
 //edit star
 router.get('/edit/:id', (req,res)=>{
