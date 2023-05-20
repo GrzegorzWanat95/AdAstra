@@ -1,32 +1,32 @@
-const path = require('path');
-const assert = require('chai').assert;
+const assert = require('assert');
 const request = require('supertest');
-const server = require('../main.js');
+const app = require('../main.js'); 
 
-describe('Adding a star', function() {
-  let app;
+describe('Formularz dodawania ciała niebieskiego', function() {
+  it('powinien dodawać nowe ciało niebieskie', function(done) {
+    const imagePath = '../AdAstra/uploads/moon6.png';
 
-  before(function() {
-    app = server.listen(3000); // Start the server
-  });
-
-  after(function(done) {
-    app.close(done); // Close the server after the tests are done
-  });
-
-  it('should add a star when the form is submitted', function(done) {
-    const starData = {
-      name: 'Kaus Australis',
-      description: 'Opis gwiazdy Kaus Australis',
-      image: path.join(__dirname, 'path/to/your/image.jpg') // Provide the path to your image file
-    };
-
-    request(app)
+    request(app) 
       .post('/add')
-      .attach('image', starData.image)
-      .field('name', starData.name)
-      .field('description', starData.description)
-      .expect(200)
+      .field('name', 'Planeta X')
+      .field('description', 'To jest opis Planety X')
+      .attach('image', imagePath) 
+      .expect(302)
+      .end(function(err, res) {
+        if (err) return done(err);
+        done();
+      });
+  });
+
+  it('powinien zwracać błąd, jeśli nie podano wymaganego pola', function(done) {
+    const imagePath = '../AdAstra/uploads/moon6.png';
+
+    request(app) 
+      .post('/add')
+      .field('name', 'Planeta Y')
+      .field('description', "") 
+      .attach('image', imagePath) 
+      .expect(400)
       .end(function(err, res) {
         if (err) return done(err);
         done();
