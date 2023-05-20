@@ -54,6 +54,12 @@ router.post('/addConstellation', upload, (req, res) => {
     stars: req.body.stars
   });
 
+  const validationError = constellation.validateSync();
+  if (validationError) {
+    res.status(400).json({ message: validationError.message, type: 'danger' });
+    return;
+  }
+
   constellation.save()
     .then(() => {
       return Star.updateOne(
