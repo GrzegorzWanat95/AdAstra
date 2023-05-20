@@ -1,17 +1,23 @@
 const assert = require('assert');
 const request = require('supertest');
-const app = require('../main.js'); 
+const app = require('../main.js');
 
-describe('Formularz dodawania konstelacji', function() {
-  it('powinien dodawać nową konstelację', function(done) {
-    const imagePath = '../AdAstra/uploads/moon6.png';
+describe('Edycja ciała niebieskiego', function() {
+  const starId = '6468c1b5f2f8ff220a0af59d'; //ID edytowanego obiektu
 
-    request(app) 
-      .post('/addConstellation')
-      .field('name', 'Konstelacja A')
-      .field('description', 'To jest opis Konstelacji A')
-      .field('stars[]', ['6468a9d4cb108912c6eb9a6b', '6468aad43355a0df0352c0d7']) // Przykładowe ID gwiazd
-      .attach('image', imagePath) 
+  //Aktualizowane dane
+  it('powinien zaktualizować dane ciała niebieskiego', function(done) {
+    const updatedData = {
+      name: 'Nowa Nazwa',
+      description: 'Nowy Opis',
+      old_image: 'moon6.png'
+    };
+
+    request(app)
+      .post(`/edit/${starId}`)
+      .field('name', updatedData.name)
+      .field('description', updatedData.description)
+      .field('old_image', updatedData.old_image)
       .expect(302)
       .end(function(err, res) {
         if (err) return done(err);
@@ -31,7 +37,7 @@ describe('Formularz dodawania konstelacji', function() {
       .field('name', updatedData.name)
       .field('description', updatedData.description)
       .field('old_image', updatedData.old_image)
-      .expect(302)
+      .expect(302) // Updated assertion to expect 302 (Found) status code
       .end(function(err, res) {
         if (err) return done(err);
         done();
