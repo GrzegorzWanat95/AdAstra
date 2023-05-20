@@ -18,7 +18,7 @@ describe('Adding a star', function() {
     const starData = {
       name: 'Kaus Australis',
       description: 'Opis gwiazdy Kaus Australis',
-      image: path.join(__dirname, 'path/to/your/image.jpg') // Provide the path to your image file
+      image: 'https://upload.wikimedia.org/wikipedia/commons/1/1d/Kaus_Australis.png'
     };
 
     request(app)
