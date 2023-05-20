@@ -20,36 +20,39 @@ function filterStarsConstellations() {
     });
   });
 }
-
-
 //switch tables
-const switchTable = document.getElementById('SwitchTable');
-const starsTable = document.getElementById('stars-table');
-const constellationsTable = document.getElementById('constellations-table');
-const starogs = document.querySelectorAll('.starog');
-const constellationStars = document.querySelectorAll('.constellationstar');
+function switchTableHandler() {
+  const switchTable = document.getElementById('SwitchTable');
+  const starsTable = document.getElementById('stars-table');
+  const constellationsTable = document.getElementById('constellations-table');
+  const starogs = document.querySelectorAll('.starog');
+  const constellationStars = document.querySelectorAll('.constellationstar');
 
-switchTable.addEventListener('click', function() {
-if (switchTable.checked) {
-starsTable.classList.remove('d-none');
-constellationsTable.classList.add('d-none');
-starogs.forEach(function(starog) {
-starog.classList.add('d-none');
-});
-constellationStars.forEach(function(constellationStar) {
-constellationStar.classList.remove('d-none');
-});
-} else {
-starsTable.classList.add('d-none');
-constellationsTable.classList.remove('d-none');
-starogs.forEach(function(starog) {
-starog.classList.remove('d-none');
-});
-constellationStars.forEach(function(constellationStar) {
-constellationStar.classList.add('d-none');
-});
+  if (switchTable.checked) {
+    starsTable.classList.remove('d-none');
+    constellationsTable.classList.add('d-none');
+    starogs.forEach(function(starog) {
+      starog.classList.remove('d-none');
+    });
+    constellationStars.forEach(function(constellationStar) {
+      constellationStar.classList.add('d-none');
+    });
+  } else {
+    starsTable.classList.add('d-none');
+    constellationsTable.classList.remove('d-none');
+    starogs.forEach(function(starog) {
+      starog.classList.add('d-none');
+    });
+    constellationStars.forEach(function(constellationStar) {
+      constellationStar.classList.remove('d-none');
+    });
+  }
 }
-});
+
+document.addEventListener('DOMContentLoaded', switchTableHandler);
+const switchTable = document.getElementById('SwitchTable');
+switchTable.addEventListener('click', switchTableHandler);
+
 //moon img
 const moons = document.querySelectorAll(".moon");
 const moonToggles = document.querySelectorAll(".moons-toggle");
@@ -107,63 +110,8 @@ if (savedOpacity !== null) {
 if (activeButton !== null) {
   activeButton.classList.add('active');
 }
-//clouds
-const toggles = document.querySelectorAll('.clouds-toggle');
-const clouds = document.querySelectorAll('.clouds');
-const clearSkyButton = document.querySelector("#clearsky");
-toggles.forEach((toggle) => {
-  toggle.addEventListener('click', () => {
-    const id = toggle.getAttribute('data-id');
-    clouds.forEach((cloud) => {
-      if (cloud.id === id) {
-        cloud.classList.add('active');
-      } else {
-        cloud.classList.remove('active');
-      }
-    });
-    localStorage.setItem('activeCloud', id);
-    toggles.forEach((toggle) => {
-      if (toggle.getAttribute('data-id') === id) {
-        toggle.classList.add('active');
-      } else {
-        toggle.classList.remove('active');
-      }
-    });
-    clearSkyButton.classList.remove('active');
-  });
-});
-clearSkyButton.addEventListener("click", () => {
-  const cloudsImages = document.querySelectorAll(".clouds");
-  cloudsImages.forEach((img) => {
-    if (img.classList.contains("active")) {
-      img.classList.remove("active");
-    }
-  });
-  localStorage.removeItem('activeCloud');
-  toggles.forEach((toggle) => {
-    toggle.classList.remove('active');
-  });
-  clearSkyButton.classList.add('active');
-});
-const activeCloudId = localStorage.getItem('activeCloud');
-if (activeCloudId) {
-  clouds.forEach((cloud) => {
-    if (cloud.id === activeCloudId) {
-      cloud.classList.add('active');
-    } else {
-      cloud.classList.remove('active');
-    }
-  });
-  toggles.forEach((toggle) => {
-    if (toggle.getAttribute('data-id') === activeCloudId) {
-      toggle.classList.add('active');
-    } else {
-      toggle.classList.remove('active');
-    }
-  });
-} else {
-  clearSkyButton.classList.add('active');
-}
+
+//rain snow
 var nbDrop = 100;
 var raining = false;
 var snowing = false;
@@ -222,6 +170,99 @@ if (localStorage.getItem("snowing") === "true") {
 }
 $('#toggle-rain').click(toggleRain);
 $('#toggle-snow').click(toggleSnow);
+
+//clouds
+const toggles = document.querySelectorAll('.clouds-toggle');
+const clouds = document.querySelectorAll('.clouds');
+const clearSkyButton = document.querySelector("#clearsky");
+toggles.forEach((toggle) => {
+  toggle.addEventListener('click', () => {
+    const dropsnow = document.querySelectorAll('.dropsnow');
+    const drop = document.querySelectorAll('.drop');
+    const id = toggle.getAttribute('data-id');
+    clouds.forEach((cloud) => {
+      if (cloud.id === id) {
+        cloud.classList.add('active');
+      } else {
+        cloud.classList.remove('active');
+      }
+    });
+    localStorage.setItem('activeCloud', id);
+    toggles.forEach((toggle) => {
+      if (toggle.getAttribute('data-id') === id) {
+        toggle.classList.add('active');
+      } else {
+        toggle.classList.remove('active');
+      }
+    });
+    clearSkyButton.classList.remove('active');
+    dropsnow.forEach(element => {
+      element.classList.remove('hidden');
+    });
+
+    drop.forEach(element => {
+      element.classList.remove('hidden');
+    });
+    document.querySelector("#toggle-rain").disabled = false;
+    document.querySelector("#toggle-snow").disabled = false; 
+  });
+});
+clearSkyButton.addEventListener("click", () => {
+  const dropsnow = document.querySelectorAll('.dropsnow');
+  const drop = document.querySelectorAll('.drop');
+  const cloudsImages = document.querySelectorAll(".clouds");
+  cloudsImages.forEach((img) => {
+    if (img.classList.contains("active")) {
+      img.classList.remove("active");
+    }
+  });
+  localStorage.removeItem('activeCloud');
+  toggles.forEach((toggle) => {
+    toggle.classList.remove('active');
+  });
+  clearSkyButton.classList.add('active');
+  dropsnow.forEach(element => {
+    element.classList.add('hidden');
+  });
+  drop.forEach(element => {
+    element.classList.add('hidden');
+  });
+  document.querySelector("#toggle-rain").disabled = true;
+  document.querySelector("#toggle-snow").disabled = true; 
+});
+const activeCloudId = localStorage.getItem('activeCloud');
+if (activeCloudId) {
+  clouds.forEach((cloud) => {
+    if (cloud.id === activeCloudId) {
+      cloud.classList.add('active');
+    } else {
+      cloud.classList.remove('active');
+    }
+  });
+  toggles.forEach((toggle) => {
+    if (toggle.getAttribute('data-id') === activeCloudId) {
+      toggle.classList.add('active');
+    } else {
+      toggle.classList.remove('active');
+    }
+  });
+} else {
+  console.log('sadasdasd');
+  const dropsnow = document.querySelectorAll('.dropsnow');
+  const drop = document.querySelectorAll('.drop');
+  clearSkyButton.classList.add('active');
+  if (dropsnow && drop) {
+    dropsnow.forEach(element => {
+      element.classList.add('hidden');
+    });
+    drop.forEach(element => {
+      element.classList.add('hidden');
+    });
+  }
+  document.querySelector("#toggle-rain").disabled = true;
+  document.querySelector("#toggle-snow").disabled = true; 
+  console.log('sadasdasd1');
+}
 //theme controller
 const colorButtons = document.querySelectorAll('.color-buttons button');
 const root = document.documentElement;
@@ -251,91 +292,98 @@ const checkboxes = document.querySelectorAll('.form-check-input');
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('change', filterStars);
 });
+
 function filterStars() {
   const checkboxes = document.querySelectorAll('.form-check-input');
   const stars = document.querySelectorAll('.starog');
+
   checkboxes.forEach((checkbox, index) => {
+    const selectedStars = document.querySelectorAll(`.starog:nth-of-type(${index + 1})`);
+    
     if (checkbox.checked) {
-      stars[index].style.display = 'block';
+      selectedStars.forEach((star) => {
+        star.style.display = 'block';
+      });
     } else {
-      stars[index].style.display = 'none';
+      selectedStars.forEach((star) => {
+        star.style.display = 'none';
+      });
     }
   });
 }
+
 //draggable star
 $(document).ready(function() {
-    $(".star").draggable({
-        containment: ".container__sky"
-    });
-    $(".star").on("dragstop", function() {
-        var position = $(this).position();
-        localStorage.setItem($(this).attr("id"), JSON.stringify(position));
-    });
+  $(".star").draggable({
+    containment: ".container__sky"
+  });
+  $(".star").on("dragstop", function() {
+    var position = $(this).position();
+    var containerHeight = $(".container__sky").height();
+    var containerWidth = $(".container__sky").width();
+    var starLeft = (position.left / containerWidth) * 100;
+    var starTop = (position.top / containerHeight) * 100;
+    console.log(starLeft + "l:p" + starTop)
+    localStorage.setItem($(this).attr("id"), JSON.stringify({
+      top: starTop + "%",
+      left: starLeft + "%"
+    }));
+  });
+  $(".star").each(function() {
+    var id = $(this).attr("id");
+    var position = JSON.parse(localStorage.getItem(id));
+    if (position !== null) {
+      var containerHeight = $(".container__sky").height();
+      var containerWidth = $(".container__sky").width();
+      var starLeft = position.left / 100 * containerWidth;
+      var starTop = position.top / 100 * containerHeight;
+      $(this).css({
+        top: starTop + '%',
+        left: starLeft + '%'
+      });
+    }
+  });
+  function scaleStars() {
+    var skyHeight = $(".container__sky").height();
+    var skyWidth = $(".container__sky").width();
     $(".star").each(function() {
-        var id = $(this).attr("id");
-        var position = JSON.parse(localStorage.getItem(id));
-        if (position !== null) {
-            $(this).css({
-                top: position.top,
-                left: position.left
-            });
-        }
+      var starWidth = skyWidth * (Math.random() * 0.005+0.002) + 0.005;
+      var starHeight = starWidth;
+      var starLeft = parseFloat($(this).css("left")) / skyWidth * 100;
+      var starTop = parseFloat($(this).css("top")) / skyHeight * 100;
+      $(this).css({
+        "width": starWidth,
+        "height": starHeight,
+        "left": starLeft + "%",
+        "top": starTop + "%"
+      });
     });
-    function scaleStars() {
-        var skyHeight = $(".container__sky").height();
-        var skyWidth = $(".container__sky").width();
-        $(".star").each(function() {
-            var starWidth = skyWidth * (Math.random() * 0.006) + 0.002; 
-            var starHeight = starWidth; 
-            var starLeft = parseFloat($(this).css("left")) / skyWidth; 
-            var starTop = parseFloat($(this).css("top")) / skyHeight; 
-            $(this).css({
-                "width": starWidth,
-                "height": starHeight,
-                "left": starLeft * 100 + "%",
-                "top": starTop * 100 + "%"
-            });
-        });
-    }
-    function displayMoon(){
-        var skyHeight = $(".container__sky").height();
-        var skyWidth = $(".container__sky").width();
-        $(".star").each(function() {
-            var starWidth = skyWidth * (Math.random() * 0.006) + 0.002; 
-            var starHeight = starWidth; 
-            var starLeft = parseFloat($(this).css("left")) / skyWidth; 
-            var starTop = parseFloat($(this).css("top")) / skyHeight; 
-            $(this).css({
-                "width": starWidth,
-                "height": starHeight,
-                "left": starLeft * 100 + "%",
-                "top": starTop * 100 + "%"
-            });
-        });
-    }
-    scaleStars();
-    $(window).resize(scaleStars);
-    function blinkStars() {
-  setTimeout(function() {
-    $(".star").addClass("blink");
+  }
+
+  scaleStars(); 
+  $(window).resize(scaleStars);
+
+  function blinkStars() {
     setTimeout(function() {
-      $(".star").removeClass("blink");
-      blinkStars();
-    }, 600);
-  }, 2000 + Math.random() * 600);
-}
-    blinkStars(); 
-});
-const starsDivs = document.querySelectorAll('.star');
+      $(".star").addClass("blink");
+      setTimeout(function() {
+        $(".star").removeClass("blink");
+        blinkStars();
+      }, 600);
+    }, 2000 + Math.random() * 600);
+  }
+
+  blinkStars();
+}); 
+
+const starsDivs = document.querySelectorAll('.starog');
 starsDivs.forEach(starDiv => {
   starDiv.addEventListener('dblclick', () => {
     const starId = starDiv.dataset.id;
-    // Wykonanie żądania AJAX, aby pobrać szczegóły danej gwiazdy
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
         const starDetails = JSON.parse(this.responseText);
-        // Wyświetlenie szczegółów danej gwiazdy w divie z klasą "container__sky"
         const containerSkyDiv = document.querySelector('.container__sky');
         containerSkyDiv.innerHTML = `
         <div class="details">
@@ -369,3 +417,48 @@ starsDivs.forEach(starDiv => {
     xhr.send();
   });
 });
+
+
+//constellation
+const constellationsDivs = document.querySelectorAll('.constellationstar');
+constellationsDivs.forEach(constellationDiv => {
+  constellationDiv.addEventListener('dblclick', () => {
+    const starId = constellationDiv.dataset.constellationid;
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        const constellationDetails = JSON.parse(this.responseText);
+        const containerSkyDiv = document.querySelector('.container__sky');
+        containerSkyDiv.innerHTML = `
+        <div class="details">
+            <div class=padding__frame>
+              <div class="details__frame">
+                <div class="image__section">
+                  <img class="details__image" src="${constellationDetails.image}" />
+                </div>
+                <div class="text__section">
+                  <h2 class="details__header">${constellationDetails.name}</h2>
+                  <div class="text__main">
+                    <div class="text__field">${constellationDetails.description}</div>
+                  </div>
+                <div class="button__section">
+                  <a href="/editConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-edit fa-lg mx-1"></i>Edytuj</a>
+                  <a href="/deleteConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-trash fa-lg mx-1"></i>Usuń</a>
+                  <button class="default__button back-button"><i class="fas fa-chevron-left"></i> Powrót</button>
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('click', () => {
+          window.location.reload();
+        });
+      }
+    };
+    xhr.open('GET', `/detailsConstellation/${starId}`, true);
+    xhr.send();
+  });
+});
+

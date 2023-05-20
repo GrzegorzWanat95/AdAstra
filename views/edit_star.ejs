@@ -1,25 +1,30 @@
 
 <%- include('layout/header') %>
-<div class="container">
-  <h1 class="my-5 text-dark">AdAstra</h1>
-  <div id="star-form" class="border p-4 mb-5 bg-white">
-    <h2 class="my-4 text-dark">Edytuj ciało niebieskie <%= star.name  %></h2>
+<div class="page__frame__add">
+  <div id="star-form">
+    <h2 class="header my-4 white">Edytuj ciało niebieskie <%= star.name  %></h2>
     <form action="/edit/<%= star._id  %>" method="post" id="add-form" enctype="multipart/form-data">
       <div class="form-group">
-        <label for="name" class="text-dark">Nazwa:</label>
-        <input type="text" value="<%= star.name  %> " class="form-control" name="name" required>
+        <label for="name" class="text-white form-label">Nazwa:</label>
+        <input type="text" class="form-control" value="<%= star.name  %> " name="name" required>
       </div>
       <div class="form-group">
-        <label for="description" class="text-dark">Opis:</label>
+        <label for="description" class="text-white form-label">Opis:</label>
         <textarea class="form-control" name="description" required><%= star.description %></textarea>
-    </div>
-      <div class="form-group">
-        <label for="image" class="text-dark">Wybierz zdjęcie:</label>
-        <input class="form-control" type="file" name="image" >
-        <img src="/<%= star.image  %>" width="100" class="img-thumbnail mt-1"> </img>
       </div>
-      <input type="hidden" name="old_image" value="<%= star.image %>"/>
-      <button type="submit" class="btn btn-success btn-block" id="add-star">Zapisz</button>
+      <div class="form-group">
+        <label for="image" class="text-white">Aktualne zdjęcie:</label>
+        <br>
+        <img src="/<%= star.image %>" alt="<%= star.name %>" width="300">
+      </div>
+      <div class="form-group">
+        <label for="new_image" class="text-white">Wybierz nowe zdjęcie:</label>
+        <input class="form-control" type="file" name="new_image">
+      </div>
+      <input type="hidden" name="old_image" value="<%= star.image %>">
+      <div class="button__pad">
+        <button type="submit" class="default__button__submit" id="update-star">Zaktualizuj</button>
+      </div>
     </form>
   </div>
 </div>

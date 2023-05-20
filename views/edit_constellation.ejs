@@ -1,0 +1,57 @@
+
+  <%- include('layout/header') %>
+  
+  <% if (typeof message !== 'undefined' && message !== null) { %>
+    <div class="alert alert-<%= message.type %>"><%= message.message %></div>
+  <% } %>
+  <div class="page__frame__add">
+    <div id="star-form">
+      <h2 class="header my-4 white">Edytuj konstelację</h2>
+      <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="put">
+        <div class="form-group">
+          <label for="name" class="text-white">Nazwa:</label>
+          <input type="text" class="form-control" name="name" value="<%= constellation.name %>" required>
+        </div>
+        <div class="form-group">
+          <label for="description" class="text-white">Opis:</label>
+          <textarea class="form-control" name="description" required><%= constellation.description %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="stars">Gwiazdy:</label>
+          <select id="stars" name="stars[]" multiple="multiple">
+            <% stars.forEach(star => { %>
+              <option value="<%= star._id %>" <%= constellation.stars.includes(star._id) ? 'selected' : '' %>><%= star.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="image" class="text-white">Aktualne zdjęcie:</label>
+          <br>
+          <img src="/<%= constellation.image %>" alt="<%= constellation.name %>" width="300">
+        </div>
+        <div class="form-group">
+          <label for="new_image" class="text-white">Wybierz nowe zdjęcie:</label>
+          <input class="form-control" type="file" name="new_image">
+        </div>
+        <input type="hidden" name="old_image" value="<%= constellation.image %>">
+        <div class="button__pad">
+          <button type="submit" class="default__button__submit" id="update-constellation">Zaktualizuj</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#stars').select2({
+        placeholder: 'Wybierz gwiazdy',
+        allowClear: true,
+        closeOnSelect: false,
+        width: '100%'
+      });
+    });
+  </script>
+
+<%- include('layout/footer') %>
