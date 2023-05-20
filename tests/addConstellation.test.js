@@ -10,7 +10,7 @@ describe('Formularz dodawania konstelacji', function() {
       .post('/addConstellation')
       .field('name', 'Konstelacja A')
       .field('description', 'To jest opis Konstelacji A')
-      .field('stars[]', ['6468a9d4cb108912c6eb9a6b', '6468aad43355a0df0352c0d7']) // Przykładowe ID gwiazd
+      .field('stars[]', ['6468c1b5f2f8ff220a0af59d', '6468f73ddd98af092a7306d9']) // Przykładowe ID gwiazd
       .attach('image', imagePath) 
       .expect(302)
       .end(function(err, res) {
@@ -25,13 +25,15 @@ describe('Formularz dodawania konstelacji', function() {
       description: '',
       old_image: 'moon6.png'
     };
-  
+
+    const starId = '6468f73ddd98af092a7306d9'; 
+
     request(app)
       .post(`/edit/${starId}`)
       .field('name', updatedData.name)
       .field('description', updatedData.description)
       .field('old_image', updatedData.old_image)
-      .expect(302)
+      .expect(302) 
       .end(function(err, res) {
         if (err) return done(err);
         done();
