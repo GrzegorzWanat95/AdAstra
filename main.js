@@ -44,3 +44,4 @@ app.use("", require("./routes/routes"))
 app.listen(PORT, () => {
     console.log(`Server started on port http://localhost:${PORT}`);
 });
+module.exports = app;
