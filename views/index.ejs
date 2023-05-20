@@ -13,8 +13,7 @@
     <div id="star-list" class="list__frame">
       <% if (message) { %>
       <div class=" alert alert-dismissible fade show alert-<%= message.type %>  " role="alert">
-          <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
-          <strong><%= message.message  %></strong>
+          <div class="alert__text"><%= message.message  %></div>
         </div>
           <% } %>
       <div class="header my-2">Symulator nocnego nieba</div>
