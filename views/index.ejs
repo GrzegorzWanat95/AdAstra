@@ -174,11 +174,17 @@
             <p class="name"><%= row.name %></p>
           </div>
         <% }) %>
-        <% constellationStars.forEach((star, index) => { %>
-          <div class="star constellationstar" id="star-<%= index + 1 %>" data-id="<%= star._id %>" data-constellation-id="<%= star.constellations %>" data-constellationid="<%= star.constellations %>">
-            <p class="name"><%= star.name %></p>
-          </div>
-        <% }) %>
+        <% const displayedStars = []; %>
+        <% constellationStars.forEach((star, index) => {
+          if (!displayedStars.includes(star._id)) {
+            displayedStars.push(star._id); 
+            %>
+            <div class="star constellationstar" id="star-<%= index + 1 %>" data-id="<%= star._id %>" data-constellation-id="<%= star.constellations %>" data-constellationid="<%= star.constellations %>">
+              <p class="name"><%= star.name %></p>
+            </div>
+            <% 
+          }
+        }) %>
     </div>
 </div>
 </div>

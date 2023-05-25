@@ -6,18 +6,20 @@ constellationCheckboxes.forEach(checkbox => {
 });
 
 function filterStarsConstellations() {
+  const selectedConstellations = Array.from(constellationCheckboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.getAttribute('data-constellation-id'));
+
   const stars = document.querySelectorAll('.constellationstar');
-  constellationCheckboxes.forEach(checkbox => {
-    const constellationId = checkbox.getAttribute('data-constellation-id');
-    stars.forEach(star => {
-      if (star.getAttribute('data-constellation-id') === constellationId) {
-        if (checkbox.checked) {
-          star.style.display = 'block';
-        } else {
-          star.style.display = 'none';
-        }
-      }
-    });
+
+  stars.forEach(star => {
+    const starConstellations = star.getAttribute('data-constellation-id').split(',');
+
+    if (selectedConstellations.some(constellationId => starConstellations.includes(constellationId))) {
+      star.style.display = 'block';
+    } else {
+      star.style.display = 'none';
+    }
   });
 }
 //switch tables
