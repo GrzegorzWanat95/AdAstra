@@ -419,19 +419,65 @@ starsDivs.forEach(starDiv => {
 });
 
 
-//constellation
-const constellationsDivs = document.querySelectorAll('.constellationstar');
-constellationsDivs.forEach(constellationDiv => {
-  constellationDiv.addEventListener('dblclick', () => {
-    const starId = constellationDiv.dataset.constellationid;
+//constellation old script
+// const constellationsDivs = document.querySelectorAll('.constellationstar');
+// constellationsDivs.forEach(constellationDiv => {
+//   constellationDiv.addEventListener('dblclick', () => {
+//     const starId = constellationDiv.dataset.constellationid;
+//     const xhr = new XMLHttpRequest();
+//     xhr.onreadystatechange = function() {
+//       if (this.readyState === 4 && this.status === 200) {
+//         const constellationDetails = JSON.parse(this.responseText);
+//         const containerSkyDiv = document.querySelector('.container__sky');
+//         containerSkyDiv.innerHTML = `
+//         <div class="details">
+//             <div class=padding__frame>
+//               <div class="details__frame">
+//                 <div class="image__section">
+//                   <img class="details__image" src="${constellationDetails.image}" />
+//                 </div>
+//                 <div class="text__section">
+//                   <h2 class="details__header">${constellationDetails.name}</h2>
+//                   <div class="text__main">
+//                     <div class="text__field">${constellationDetails.description}</div>
+//                   </div>
+//                 <div class="button__section">
+//                   <a href="/editConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-edit fa-lg mx-1"></i>Edytuj</a>
+//                   <a href="/deleteConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-trash fa-lg mx-1"></i>Usuń</a>
+//                   <button class="default__button back-button"><i class="fas fa-chevron-left"></i> Powrót</button>
+//               </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         `;
+//         const backButton = document.querySelector('.back-button');
+//         backButton.addEventListener('click', () => {
+//           window.location.reload();
+//         });
+//       }
+//     };
+//     xhr.open('GET', `/detailsConstellation/${starId}`, true);
+//     xhr.send();
+//   });
+// });
+
+
+const icons = document.querySelectorAll('.text-success-icon');
+const containerSkyDiv = document.querySelector('.container__sky');
+let originalContent = containerSkyDiv.innerHTML;
+
+icons.forEach(icon => {
+  icon.addEventListener('click', () => {
+    const starId = icon.getAttribute('data-rowid');
+
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
         const constellationDetails = JSON.parse(this.responseText);
-        const containerSkyDiv = document.querySelector('.container__sky');
         containerSkyDiv.innerHTML = `
-        <div class="details">
-            <div class=padding__frame>
+          <div class="details">
+            <div class="padding__frame">
               <div class="details__frame">
                 <div class="image__section">
                   <img class="details__image" src="${constellationDetails.image}" />
@@ -441,24 +487,83 @@ constellationsDivs.forEach(constellationDiv => {
                   <div class="text__main">
                     <div class="text__field">${constellationDetails.description}</div>
                   </div>
-                <div class="button__section">
-                  <a href="/editConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-edit fa-lg mx-1"></i>Edytuj</a>
-                  <a href="/deleteConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-trash fa-lg mx-1"></i>Usuń</a>
-                  <button class="default__button back-button"><i class="fas fa-chevron-left"></i> Powrót</button>
-              </div>
+                  <div class="button__section">
+                    <a href="/editConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-edit fa-lg mx-1"></i>Edytuj</a>
+                    <a href="/deleteConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-trash fa-lg mx-1"></i>Usuń</a>
+                    <button class="default__button back-button"><i class="fas fa-chevron-left"></i> Powrót</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         `;
+
         const backButton = document.querySelector('.back-button');
         backButton.addEventListener('click', () => {
-          window.location.reload();
+          containerSkyDiv.innerHTML = originalContent;
+          switchTableHandler();
+          initializePage();
         });
       }
     };
+
     xhr.open('GET', `/detailsConstellation/${starId}`, true);
     xhr.send();
   });
 });
 
+function initializePage() {
+  // Tutaj znajduje się kod inicjalizujący strony, np. przypisanie zdarzeń, ustawienia, itp.
+
+  $(".star").draggable({
+    containment: ".container__sky"
+  });
+
+  $(".star").on("dragstop", function() {
+    var position = $(this).position();
+    var containerHeight = $(".container__sky").height();
+    var containerWidth = $(".container__sky").width();
+    var starLeft = (position.left / containerWidth) * 100;
+    var starTop = (position.top / containerHeight) * 100;
+    console.log(starLeft + "l:p" + starTop)
+    localStorage.setItem($(this).attr("id"), JSON.stringify({
+      top: starTop + "%",
+      left: starLeft + "%"
+    }));
+  });
+
+  $(".star").each(function() {
+    var id = $(this).attr("id");
+    var position = JSON.parse(localStorage.getItem(id));
+    if (position !== null) {
+      var containerHeight = $(".container__sky").height();
+      var containerWidth = $(".container__sky").width();
+      var starLeft = position.left / 100 * containerWidth;
+      var starTop = position.top / 100 * containerHeight;
+      $(this).css({
+        top: starTop + '%',
+        left: starLeft + '%'
+      });
+    }
+  });
+
+  function scaleStars() {
+    var skyHeight = $(".container__sky").height();
+    var skyWidth = $(".container__sky").width();
+    $(".star").each(function() {
+      var starWidth = skyWidth * (Math.random() * 0.005 + 0.002) + 0.005;
+      var starHeight = starWidth;
+      var starLeft = parseFloat($(this).css("left")) / skyWidth * 100;
+      var starTop = parseFloat($(this).css("top")) / skyHeight * 100;
+      $(this).css({
+        "width": starWidth,
+        "height": starHeight,
+        "left": starLeft + "%",
+        "top": starTop + "%"
+      });
+    });
+  }
+
+  // Wywołanie funkcji scaleStars()
+  scaleStars();
+}

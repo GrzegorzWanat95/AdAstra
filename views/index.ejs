@@ -144,8 +144,8 @@
             <td> 
               <div class="form-check form-switch">
                 <input class="form-check-input constellation" data-constellation-id="<%= row._id %>" type="checkbox" checked role="switch" id="constellation-<%= row._id %>">              </div>
-              <!-- <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-              <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a> -->
+                <span class="text-success-icon" data-rowid="<%= row._id %>"><i class="fas fa-edit fa-lg mx-1"></i></span>
+                <!--<a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a> -->
             </td>
           </tr>
           <% }) %>
