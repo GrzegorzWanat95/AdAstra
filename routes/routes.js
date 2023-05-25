@@ -238,7 +238,7 @@ router.get("/details/:id", async (req, res) => {
 //Wyświetlenie szczegółów kosntelacji
 router.get("/detailsConstellation/:id", async (req, res) => {
   try {
-    const constellation = await Constellation.findById(req.params.id);
+    const constellation = await Constellation.findById(req.params.id).populate('stars');
     res.send(constellation);
   } catch (err) {
     console.log(err);

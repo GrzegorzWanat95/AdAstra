@@ -349,7 +349,11 @@ starsDivs.forEach(starDiv => {
         `;
         const backButton = document.querySelector('.back-button');
         backButton.addEventListener('click', () => {
-          window.location.reload();
+          containerSkyDiv.innerHTML = originalContent;
+          switchTableHandler();
+          initializeStars();
+          clouds();
+          moon();
         });
       }
     };
@@ -427,6 +431,15 @@ icons.forEach(icon => {
                   <div class="text__main">
                     <div class="text__field">${constellationDetails.description}</div>
                   </div>
+                  <div class="text__main">
+                  <div class="text__field">
+                    ${constellationDetails.description}
+                    <ul>
+                      ${constellationDetails.stars.map(star => `<li>${star.name}</li>`).join('')}
+                    </ul>
+                  </div>
+                </div>
+
                   <div class="button__section">
                     <a href="/editConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-edit fa-lg mx-1"></i>Edytuj</a>
                     <a href="/deleteConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-trash fa-lg mx-1"></i>Usuń</a>
