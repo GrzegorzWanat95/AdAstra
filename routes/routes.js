@@ -59,7 +59,7 @@ router.post("/addConstellation", upload, (req, res) => {
   constellation
     .save()
     .then(() => {
-      return Star.updateOne(
+      return Star.updateMany(
         { _id: { $in: req.body.stars } },
         { $push: { constellations: constellation._id } }
       );
