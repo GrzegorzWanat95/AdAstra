@@ -1220,3 +1220,11 @@ td{
   justify-content: center;
   justify-items: center;
 }
+.select2-results__option
+{
+  color : black;
+}
+.select2-selection__choice
+{
+  color: #000000;
+}
