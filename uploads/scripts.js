@@ -267,9 +267,10 @@ if (activeCloudId) {
   console.log('sadasdasd1');
 }}
 //theme controller
-const colorButtons = document.querySelectorAll('.color-buttons button');
+function themeSet(){
+const colorButtons = document.querySelectorAll('.color-buttons-theme button');
 const root = document.documentElement;
-// save to local storage and to css variable
+
 function changeColor(color) {
   root.style.setProperty('--primary-color', color);
   localStorage.setItem('primary-color', color);
@@ -289,7 +290,7 @@ if (savedColor) {
   changeColor(savedColor);
   const activeButton = document.querySelector(`[data-color="${savedColor}"]`);
   activeButton.classList.add('active');
-}
+}}
 //filter
 const checkboxes = document.querySelectorAll('.form-check-input');
 checkboxes.forEach(checkbox => {
@@ -474,13 +475,16 @@ function initializeStars() {
     $(".star").draggable({
       containment: ".container__sky"
     });
+    $(".star").css({
+      left: "0%" ,
+      top: "20%"
+    });
     $(".star").on("dragstop", function() {
       var position = $(this).position();
       var containerHeight = $(".container__sky").height();
       var containerWidth = $(".container__sky").width();
       var starLeft = (position.left / containerWidth) * 100;
       var starTop = (position.top / containerHeight) * 100;
-      console.log(starLeft + "l:p" + starTop)
       localStorage.setItem($(this).attr("id"), JSON.stringify({
         top: starTop + "%",
         left: starLeft + "%"
@@ -536,3 +540,4 @@ function initializeStars() {
 moon();
 clouds();
 initializeStars();
+themeSet();
