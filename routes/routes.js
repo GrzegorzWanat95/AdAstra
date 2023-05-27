@@ -91,30 +91,40 @@ router.get("/addConstellation", (req, res) => {
 });
 
 //Dodanie gwiazdy do bazy danych
-router.post("/add", upload, (req, res) => {
+router.post("/add", upload, async (req, res) => {
   if (!req.body.description || !req.body.name) {
     return res.status(400).json({ message: "Data field is required!" });
   }
 
-  const star = new Star({
-    name: req.body.name,
-    description: req.body.description,
-    image: req.file.filename,
-  });
+  try {
+    const existingStar = await Star.findOne({ name: req.body.name });
 
-  star
-    .save()
-    .then(() => {
+    if (existingStar) {
       req.session.message = {
-        type: "success",
-        message: "Star added successfully!",
+        type: "danger",
+        message: "Star with this name already exists!",
       };
-      res.redirect("/");
-    })
-    .catch((error) => {
-      res.status(500).json({ message: error.message, type: "danger" });
+      return res.redirect("/");
+    }
+
+    const star = new Star({
+      name: req.body.name,
+      description: req.body.description,
+      image: req.file.filename,
     });
+
+    await star.save();
+
+    req.session.message = {
+      type: "success",
+      message: "Star added successfully!",
+    };
+    res.redirect("/");
+  } catch (error) {
+    res.status(500).json({ message: error.message, type: "danger" });
+  }
 });
+
 
 //Edycja gwiazdy
 router.get("/edit/:id", (req, res) => {
