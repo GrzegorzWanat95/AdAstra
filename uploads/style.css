@@ -958,9 +958,19 @@ thead{
   }
 }
 
+
+.constelation__field{
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 .text__main{
-  height: 80%;
+  height: auto;
   width: 100%;
+  margin-bottom: 5vh;
 }
 
 .text__field{

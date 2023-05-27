@@ -141,10 +141,13 @@
           <tr class="align-middle">
             <td> <img src="<%=row.image%>"class="small_img" /></td>
             <td class="record"> <%=row.name  %></td>
-            <td> 
-              <div class="form-check form-switch">
-                <input class="form-check-input constellation" data-constellation-id="<%= row._id %>" type="checkbox" checked role="switch" id="constellation-<%= row._id %>">              </div>
-                <span class="text-success-icon" data-rowid="<%= row._id %>"><i class="fas fa-edit fa-lg mx-1"></i></span>
+            <td class="constelation__buttons"> 
+              <div class="constelation__field">
+                <div class="form-check form-switch">
+                  <input class="form-check-input constellation" data-constellation-id="<%= row._id %>" type="checkbox" checked role="switch" id="constellation-<%= row._id %>">              
+                </div>
+                  <span class="text-success-icon" data-rowid="<%= row._id %>"><i class="fas fa-edit fa-lg mx-1"></i></span>
+              </div>
                 <!--<a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a> -->
             </td>
           </tr>
