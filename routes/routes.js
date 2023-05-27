@@ -42,38 +42,48 @@ router.get("/", async (req, res) => {
 });
 
 //Dodanie konstelacji do bazy danych
-router.post("/addConstellation", upload, (req, res) => {
-  const constellation = new Constellation({
-    name: req.body.name,
-    description: req.body.description,
-    image: req.file.filename,
-    stars: req.body.stars,
-  });
-
-  const validationError = constellation.validateSync();
-  if (validationError) {
-    res.status(400).json({ message: validationError.message, type: "danger" });
-    return;
+router.post("/addConstellation", upload, async (req, res) => {
+  if (!req.body.name || !req.body.description || !req.body.stars) {
+    return res.status(400).json({ message: "Data fields are required!" });
   }
 
-  constellation
-    .save()
-    .then(() => {
-      return Star.updateMany(
-        { _id: { $in: req.body.stars } },
-        { $push: { constellations: constellation._id } }
-      );
-    })
-    .then(() => {
+  try {
+    const existingConstellation = await Constellation.findOne({ name: req.body.name });
+
+    if (existingConstellation) {
       req.session.message = {
-        type: "success",
-        message: "Constellation added successfully!",
+        type: "danger",
+        message: "Constellation with this name already exists!",
       };
-      res.redirect("/");
-    })
-    .catch((error) => {
-      res.json({ message: error.message, type: "danger" });
+      return res.redirect("/");
+    }
+
+    const constellation = new Constellation({
+      name: req.body.name,
+      description: req.body.description,
+      image: req.file.filename,
+      stars: req.body.stars,
     });
+
+    const savedConstellation = await constellation.save();
+
+    await Star.updateMany(
+      { _id: { $in: req.body.stars } },
+      { $push: { constellations: savedConstellation._id } }
+    );
+
+    req.session.message = {
+      type: "success",
+      message: "Constellation added successfully!",
+    };
+    res.redirect("/");
+  } catch (error) {
+    req.session.message = {
+      type: "danger",
+      message: error.message,
+    };
+    res.redirect("/");
+  }
 });
 
 //Pobranie konstelacji z bazy danych
