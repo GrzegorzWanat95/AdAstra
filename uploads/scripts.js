@@ -390,49 +390,6 @@ starsDivs.forEach((starDiv) => {
   });
 });
 
-//constellation old script
-// const constellationsDivs = document.querySelectorAll('.constellationstar');
-// constellationsDivs.forEach(constellationDiv => {
-//   constellationDiv.addEventListener('dblclick', () => {
-//     const starId = constellationDiv.dataset.constellationid;
-//     const xhr = new XMLHttpRequest();
-//     xhr.onreadystatechange = function() {
-//       if (this.readyState === 4 && this.status === 200) {
-//         const constellationDetails = JSON.parse(this.responseText);
-//         const containerSkyDiv = document.querySelector('.container__sky');
-//         containerSkyDiv.innerHTML = `
-//         <div class="details">
-//             <div class=padding__frame>
-//               <div class="details__frame">
-//                 <div class="image__section">
-//                   <img class="details__image" src="${constellationDetails.image}" />
-//                 </div>
-//                 <div class="text__section">
-//                   <h2 class="details__header">${constellationDetails.name}</h2>
-//                   <div class="text__main">
-//                     <div class="text__field">${constellationDetails.description}</div>
-//                   </div>
-//                 <div class="button__section">
-//                   <a href="/editConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-edit fa-lg mx-1"></i>Edytuj</a>
-//                   <a href="/deleteConstellation/${constellationDetails._id}" class="default__button"><i class="fas fa-trash fa-lg mx-1"></i>Usuń</a>
-//                   <button class="default__button back-button"><i class="fas fa-chevron-left"></i> Powrót</button>
-//               </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         `;
-//         const backButton = document.querySelector('.back-button');
-//         backButton.addEventListener('click', () => {
-//           window.location.reload();
-//         });
-//       }
-//     };
-//     xhr.open('GET', `/detailsConstellation/${starId}`, true);
-//     xhr.send();
-//   });
-// });
-
 const icons = document.querySelectorAll(".text-success-icon");
 const containerSkyDiv = document.querySelector(".container__sky");
 let originalContent = containerSkyDiv.innerHTML;

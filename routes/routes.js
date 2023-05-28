@@ -48,7 +48,9 @@ router.post("/addConstellation", upload, async (req, res) => {
   }
 
   try {
-    const existingConstellation = await Constellation.findOne({ name: req.body.name });
+    const existingConstellation = await Constellation.findOne({
+      name: req.body.name,
+    });
 
     if (existingConstellation) {
       req.session.message = {
@@ -134,7 +136,6 @@ router.post("/add", upload, async (req, res) => {
     res.status(500).json({ message: error.message, type: "danger" });
   }
 });
-
 
 //Edycja gwiazdy
 router.get("/edit/:id", (req, res) => {
@@ -258,7 +259,9 @@ router.get("/details/:id", async (req, res) => {
 //Wyświetlenie szczegółów kosntelacji
 router.get("/detailsConstellation/:id", async (req, res) => {
   try {
-    const constellation = await Constellation.findById(req.params.id).populate('stars');
+    const constellation = await Constellation.findById(req.params.id).populate(
+      "stars"
+    );
     res.send(constellation);
   } catch (err) {
     console.log(err);
