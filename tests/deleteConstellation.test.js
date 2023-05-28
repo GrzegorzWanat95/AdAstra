@@ -4,7 +4,7 @@ const app = require('../main.js');
 
 describe('Usuwanie konstelacji', function() {
   it('powinno usunąć konstelację i zwrócić kod 302', function(done) {
-    const constellationId = '6468bfb411d4afc3f735ea2c';
+    const constellationId = '6473012c9051e272b009a4f6';
 
     request(app)
       .get(`/deleteConstellation/${constellationId}`)
@@ -16,7 +16,7 @@ describe('Usuwanie konstelacji', function() {
   });
 
   it('powinno zwrócić kod 404, jeśli konstelacja nie istnieje', function(done) {
-    const nonExistentConstellationId = '6468aad43355a0df0352c0d71';
+    const nonExistentConstellationId = '6473012c9051e272b009a4f6';
 
     request(app)
       .delete(`/deleteConstellation/${nonExistentConstellationId}`)

@@ -4,7 +4,7 @@ const app = require('../main.js');
 
 describe('Usuwanie gwiazdy', function() {
   it('powinno usunąć gwiazdę i zwrócić kod 302', function(done) {
-    const starId = '6468ab3eda8f82006c9a754b';
+    const starId = '64730110d8c0dd7d3858e194';
 
     request(app)
       .get(`/delete/${starId}`)
@@ -16,7 +16,7 @@ describe('Usuwanie gwiazdy', function() {
   });
 
   it('powinno zwrócić kod 404, jeśli gwiazda nie istnieje', function(done) {
-    const nonExistentStarId = '6468aad43355a0df0352c0d71';
+    const nonExistentStarId = '64730110d8c0dd7d3858e194';
 
     request(app)
       .delete(`/delete/${nonExistentStarId}`)

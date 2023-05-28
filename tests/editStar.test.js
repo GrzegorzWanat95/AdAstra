@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../main.js');
 
 describe('Edycja ciała niebieskiego', function() {
-  const starId = '6468c1b5f2f8ff220a0af59d'; //ID edytowanego obiektu
+  const starId = '6472f96f5774b14bfd13411f'; //ID edytowanego obiektu
 
   //Aktualizowane dane
   it('powinien zaktualizować dane ciała niebieskiego', function(done) {

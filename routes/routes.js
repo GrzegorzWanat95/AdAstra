@@ -336,4 +336,84 @@ router.get("/add", (req, res) => {
   res.render("add_star", { title: "Add" });
 });
 
+//Endpointy do testów w Postmanie
+// Pobranie listy gwiazd
+router.get('/getStars', async (req, res) => {
+  try {
+    const stars = await Star.find();
+
+    res.json(stars);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Wystąpił błąd serwera' });
+  }
+});
+
+// Pobranie listy Konstelacji
+router.get('/getConstellations', async (req, res) => {
+  try {
+    const constellation = await Constellation.find();
+
+    res.json(constellation);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Wystąpił błąd serwera' });
+  }
+});
+
+//Pobranie konkretnej gwiazdy po nazwie
+router.get('/getStarByName/:name', async (req, res) => {
+  try {
+    const starName = req.params.name;
+
+    const star = await Star.findOne({ name: starName});
+
+    // sprawdzanie czy znalazło gwiazdę o takiej nazwie
+    if (!star) {
+      return res.status(404).json({ message: 'Pozycja nie została znaleziona' });
+    }
+
+    res.json(star);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Wystąpił błąd serwera' });
+  }
+});
+
+//Pobranie konkretnej konstelacji po nazwie
+router.get('/getConstellationByName/:name', async (req, res) => {
+  try {
+    const constellationName = req.params.name;
+
+    const constellation = await Constellation.findOne({ name: constellationName});
+
+    // sprawdzanie czy znalazło konstelację o takiej nazwie
+    if (!constellation) {
+      return res.status(404).json({ message: 'Pozycja nie została znaleziona' });
+    }
+
+    res.json(constellation);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Wystąpił błąd serwera' });
+  }
+});
+
+
+//Dodawanie gwiazd ( na potrzeby testów w postman, żeby zwracało wynik w JSON)
+router.post('/addStarTest', upload, async (req, res) => {
+  try {
+    const star = new Star({
+      name: req.body.name,
+      description: req.body.description,
+      image: req.file.filename,
+    });
+
+    const savedStar = await star.save();
+    res.json(savedStar);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = router;
